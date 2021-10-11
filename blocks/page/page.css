@@ -3,3 +3,9 @@
   background-color: #000000;
   padding-top: 45px;
 }
+
+@media screen and (max-width: 428px) {
+  .page {
+    padding-top: 28px;
+  }
+}

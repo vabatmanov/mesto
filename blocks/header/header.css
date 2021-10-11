@@ -1,17 +1,23 @@
 .header {
-  height: 75px;
+  height: 74px;
   max-width: 880px;
   width: 100%;
   box-sizing: border-box;
-
   margin: 0 auto 0;
-  border-bottom: 10px solid red/*rgba(84,84,84,0.7)*/;
+  border-bottom: 1px solid rgba(84,84,84,0.7);
 }
 
 
-@media screen and (max-width: 918px) {
+@media screen /*and (min-width: 429px)*/ and (max-width: 918px) {
   .header {
     padding: 0 19px;
 
+  }
+}
+
+@media screen and (max-width: 428px) {
+  .header {
+    /*padding: 0 19px;*/
+    height: 56px;
   }
 }
