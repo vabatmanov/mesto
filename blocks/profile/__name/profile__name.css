@@ -1,3 +1,12 @@
 .profile__name {
   color: #FFFFFF;
+  grid-column: 2/3;
+  grid-row: 2/3;
+  margin: 0 0 0 30px;
+
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 42px;
+  line-height: 48px;
 }
