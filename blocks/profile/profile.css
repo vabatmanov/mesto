@@ -1,8 +1,8 @@
 .profile {
   display: grid;
-  grid-template-columns: 120px 294px 42px auto;
+  grid-template-columns: 120px 324px 42px auto;
   grid-template-rows: 22px 39px 16px 18px auto;
   max-width: 880px;
-  margin: 40px auto;
+  margin: 40px auto 0;
   min-height: 120px;
 }
