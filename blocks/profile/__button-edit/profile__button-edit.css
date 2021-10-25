@@ -8,4 +8,22 @@
   align-self: end;
   justify-self: end;
   background: url(../../../images/pencil.svg) center center/10px 10px no-repeat;
+  transition: opacity 0.3s linear;
+}
+
+.profile__button-edit:hover {
+  cursor: pointer;
+  opacity: 0.6;
+}
+
+
+@media screen and (max-width: 523px) {
+  .profile__button-edit {
+    margin-left: 10px;
+    justify-self: start;
+    grid-column: 3/4;
+    background-size: 7.5px 7.5px;
+    width: 18px;
+    height: 18px;
+  }
 }

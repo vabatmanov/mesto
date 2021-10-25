@@ -4,3 +4,12 @@
   height: 120px;
   grid-row: 1/4;
 }
+
+@media screen and (max-width: 523px) {
+  .profile__avatar {
+    grid-column: 2/3;
+    justify-self: center;
+
+
+  }
+}
