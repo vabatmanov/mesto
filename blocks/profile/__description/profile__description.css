@@ -1,0 +1,18 @@
+.profile__description {
+  color: #FFFFFF;
+  grid-column: 2/3;
+  grid-row: 4/5;
+  margin: 0 0 0 30px;
+
+  font: normal normal 18px/22px Inter, Arial, sans-serif;
+
+}
+
+@media screen and (max-width: 523px) {
+  .profile__description {
+    font: normal normal 14px/17px Inter, Arial, sans-serif;
+    justify-self: center;
+    grid-column: 2/3;
+    margin-left: 0;
+  }
+}
