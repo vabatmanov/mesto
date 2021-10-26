@@ -1,0 +1,14 @@
+.cards__like {
+  grid-column: 2/3;
+  grid-row: 2/3;
+  background: url(../../../images/like.svg) center center/22px 19px no-repeat;
+  width: 22px;
+  height: 19px;
+  justify-self: center;
+  transition: opacity 0.3s linear;
+}
+
+.cards__like:hover {
+  cursor: pointer;
+  opacity: 0.5;
+}
