@@ -21,3 +21,13 @@
 @import url(../blocks/cards/__image/cards__image.css);
 @import url(../blocks/cards/__caption/cards__caption.css);
 @import url(../blocks/cards/__like/cards__like.css);
+
+@import url(../blocks/popup/popup.css);
+@import url(../blocks/popup/_open/popup_open.css);
+@import url(../blocks/popup/__content/popup__content.css);
+@import url(../blocks/popup/__button-close/popup__button-close.css);
+@import url(../blocks/popup/__caption/popup__caption.css);
+@import url(../blocks/popup/__form/popup__form.css);
+@import url(../blocks/popup/__input/popup__input.css);
+@import url(../blocks/popup/__send/popup__send.css);
+
