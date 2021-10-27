@@ -1,8 +1,11 @@
 .profile__name {
   color: #FFFFFF;
   grid-column: 2/3;
-  grid-row: 2/3;
+  grid-row: 2/4;
   margin: 0 0 0 30px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 
   font: normal 500 42px/1.14 Inter, Arial, sans-serif;
 }
@@ -11,7 +14,6 @@
   .profile__name {
     font: normal 500 27px/33px Inter, Arial, sans-serif;
     grid-column: 2/3;
-    justify-self: center;
     margin-left: 0;
   }
 }

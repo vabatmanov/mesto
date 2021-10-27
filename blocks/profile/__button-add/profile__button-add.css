@@ -19,7 +19,7 @@
   opacity: 0.6;
 }
 
-@media screen /*and (min-width: 429px)*/ and (max-width: 690px) {
+@media screen /*and (min-width: 524px)*/ and (max-width: 690px) {
   .profile__button-add {
     grid-column: 2/3;
     grid-row: 6/7;
@@ -31,7 +31,8 @@
   .profile__button-add {
     grid-column: 1/6;
     grid-row: 5/6;
-    width: 100%;
+    width: 282px;
     background-size: 16px 16px;
+    justify-self: center;
   }
 }

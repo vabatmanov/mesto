@@ -5,6 +5,13 @@
   grid-row: 1/4;
 }
 
+@media screen and (min-width: 524px) and (max-width: 690px) {
+  .profile__avatar {
+    grid-row: 2/7;
+    align-self: center;
+  }
+}
+
 @media screen and (max-width: 523px) {
   .profile__avatar {
     grid-column: 2/3;

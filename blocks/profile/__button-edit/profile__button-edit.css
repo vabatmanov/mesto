@@ -1,12 +1,13 @@
 .profile__button-edit {
   width: 24px;
   height: 24px;
+  margin: 0 18px 0 18px;
   border: 1px solid #FFFFFF;
   background-color: black;
   grid-column: 3/4;
   grid-row: 2/3;
   align-self: end;
-  justify-self: end;
+  justify-self: center;
   background: url(../../../images/pencil.svg) center center/10px 10px no-repeat;
   transition: opacity 0.3s linear;
 }
@@ -16,6 +17,11 @@
   opacity: 0.6;
 }
 
+/*@media screen and (min-width: 429px) and (max-width: 690px) {
+  .profile__button-edit {
+    justify-self: end;
+  }
+}*/
 
 @media screen and (max-width: 523px) {
   .profile__button-edit {
