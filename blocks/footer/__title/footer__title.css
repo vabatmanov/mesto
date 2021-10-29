@@ -1,7 +1,6 @@
 .footer__title {
   margin: 67px auto 0;
   max-width: 880px;
-
   font: normal normal 18px/22px Inter, Arial, sans-serif;
   color: #545454;
 }
@@ -9,7 +8,6 @@
 @media screen /*and (min-width: 429px)*/ and (max-width: 918px) {
   .footer__title {
     padding: 0 19px;
-
   }
 }
 

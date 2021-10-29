@@ -16,7 +16,5 @@
   .profile__avatar {
     grid-column: 2/3;
     justify-self: center;
-
-
   }
 }

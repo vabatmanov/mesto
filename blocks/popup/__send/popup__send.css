@@ -7,12 +7,7 @@
   border-radius: 2px;
   border: none;
   padding: 0;
-
-  font-family: Inter;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 18px;
-  line-height: 22px;
+  font: normal normal 18px/22px Inter, Arial, sans-serif;
   transition: opacity 0.3s linear;
 }
 
