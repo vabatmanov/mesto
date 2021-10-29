@@ -19,62 +19,62 @@
         <img class="profile__avatar" src="images/avatar.jpg" alt="Изображение профиля">
         <h1 class="profile__name">Жак-Ив Кусто</h1>
         <p class="profile__description">Исследователь океана</p>
-        <button class="profile__button-edit" type="button"></button>
-        <button class="profile__button-add"></button>
+        <button class="profile__button-edit" aria-label="Изменить" type="button"></button>
+        <button class="profile__button-add" aria-label="Добавить" type="button"></button>
       </article>
       <section class="elements">
         <ul class="cards">
           <li class="cards__item">
             <img class="cards__image" src="images/cards-image/karachaevsk.png" alt="Изображение Карачаевска">
             <h2 class="cards__caption">Карачаевск</h2>
-            <div class="cards__like"></div>
+            <button class="cards__like" aria-label="Поставить лайк" type="button"></button>
           </li>
 
           <li class="cards__item">
             <img class="cards__image" src="images/cards-image/gora-elbrus.jpg" alt="Изображение горы Эльбрус">
             <h2 class="cards__caption">Гора Эльбрус</h2>
-            <div class="cards__like"></div>
+            <button class="cards__like" aria-label="Поставить лайк" type="button"></button>
           </li>
 
           <li class="cards__item">
             <img class="cards__image" src="images/cards-image/kharachaevo.jpg" alt="Изображение Домбая">
             <h2 class="cards__caption">Домбай</h2>
-            <div class="cards__like"></div>
+            <button class="cards__like" aria-label="Поставить лайк" type="button"></button>
           </li>
 
           <li class="cards__item">
             <img class="cards__image" src="images/cards-image/karachaevsk.png" alt="Изображение Карачаевска">
             <h2 class="cards__caption">Гора Эльбрус</h2>
-            <div class="cards__like"></div>
+            <button class="cards__like" aria-label="Поставить лайк" type="button"></button>
           </li>
 
           <li class="cards__item">
             <img class="cards__image" src="images/cards-image/gora-elbrus.jpg" alt="Изображение горы Эльбрус">
             <h2 class="cards__caption">Домбай</h2>
-            <div class="cards__like"></div>
+            <button class="cards__like" aria-label="Поставить лайк" type="button"></button>
           </li>
 
           <li class="cards__item">
             <img class="cards__image" src="images/cards-image/kharachaevo.jpg" alt="Изображение Карачаево">
             <h2 class="cards__caption">Карачаево-Чукотск</h2>
-            <div class="cards__like"></div>
+            <button class="cards__like" aria-label="Поставить лайк" type="button"></button>
           </li>
         </ul>
       </section>
     </main>
 
     <footer class="footer">
-      <h2 class="footer__title">&#64; 2020 Mesto Russia</h2>
+      <p class="footer__title">&#64; 2020 Mesto Russia</p>
     </footer>
 
     <div class="popup">
       <div class="popup__content">
-        <button class="popup__button-close"></button>
+        <button class="popup__button-close" aria-label="Закрыть" type="button"></button>
         <h3 class="popup__caption">Редактировать профиль</h3>
-        <form class="popup__form">
-          <input type="text" class="popup__input popup__input_name">
-          <input type="text" class="popup__input popup__input_hobbies">
-          <button class="popup__send">Сохранить</button>
+        <form class="popup__form" name="editprofile">
+          <input type="text" class="popup__input popup__input_contains_name" name="">
+          <input type="text" class="popup__input popup__input_contains_hobbies" name="">
+          <button class="popup__send" aria-label="Сохранить" type="button">Сохранить</button>
         </form>
       </div>
     </div>

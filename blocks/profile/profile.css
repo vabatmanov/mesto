@@ -10,7 +10,6 @@
   .profile {
     grid-template-columns: 120px 324px min-content;
     max-width: 486px;
-
   }
 }
 

@@ -6,9 +6,7 @@
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
-
   font: normal normal 18px/22px Inter, Arial, sans-serif;
-
 }
 
 @media screen and (max-width: 523px) {

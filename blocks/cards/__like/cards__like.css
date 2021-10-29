@@ -5,6 +5,7 @@
   width: 22px;
   height: 19px;
   justify-self: center;
+  border: 0;
   transition: opacity 0.3s linear;
 }
 
