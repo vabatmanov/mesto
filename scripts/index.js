@@ -30,6 +30,31 @@ function submitForm(event) {
   closePopup();
 }
 
+/* Работа №5 */
+function addCardItems (list) {
+  const templateCard = document.querySelector('#template-cards-item').content;
+  const listCards = document.querySelector('.cards');
+
+  list.forEach(function (item) {
+    const templateCardItem = templateCard.querySelector('.cards__item').cloneNode(true);
+    templateCardItem.querySelector('.cards__image').alt = 'Изображение ' + item.name;
+    templateCardItem.querySelector('.cards__image').src = item.link;
+    templateCardItem.querySelector('.cards__caption').textContent = item.name;
+    templateCardItem.querySelector('.cards__bin').addEventListener('click', function (evt) {
+      evt.target.closest('.cards__item').remove();
+    });
+
+
+    listCards.prepend(templateCardItem);
+
+    console.log(templateCardItem);
+  })
+/*
+addCardItems ([{name: 'YRA', link: 'http'}])
+*/
+
+}
+
 
 editButton.addEventListener('click', openPopup);
 popupClosed.addEventListener('click', closePopup);
