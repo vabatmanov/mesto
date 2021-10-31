@@ -1,0 +1,17 @@
+.cards__bin {
+  grid-column: 2/3;
+  grid-row: 1/2;
+  width: 18px;
+  height: 19px;
+  align-self: start;
+  justify-self: end;
+  margin: 20px 20px 0 0;
+  background: url(../../../images/bin.svg) center center/22px 19px no-repeat;
+  border: 0;
+  transition: opacity 0.3s linear;
+}
+
+.cards__bin:hover {
+  cursor: pointer;
+  opacity: 0.5;
+}

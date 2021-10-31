@@ -26,6 +26,7 @@
         <ul class="cards">
           <li class="cards__item">
             <img class="cards__image" src="images/cards-image/karachaevsk.png" alt="Изображение Карачаевска">
+            <button class="cards__bin" aria-label="Удалить" type="button"></button>
             <h2 class="cards__caption">Карачаевск</h2>
             <button class="cards__like" aria-label="Поставить лайк" type="button"></button>
           </li>
@@ -78,8 +79,28 @@
         </form>
       </div>
     </div>
-
   </div>
-<script src="scripts/index.js"></script>
+
+  <template id="template-cards-item">
+    <li class="cards__item">
+      <img class="cards__image">
+      <button class="cards__bin" aria-label="Удалить" type="button"></button>
+      <h2 class="cards__caption"></h2>
+      <button class="cards__like" aria-label="Поставить лайк" type="button"></button>
+    </li>
+  </template>
+
+  <script src="scripts/index.js"></script>
 </body>
 </html>
+<!--
+1. Шесть карточек «из коробки»
++ 2. Добавление карточки (тут отдельную функцию при добавлении, чтобы потом вызывать при попапе и загрузке)
+3. Форма добавления карточки
+4. Лайк карточки
+5. Удаление карточки
+  + 5.1 добавить иконку
+  + 5.2 скрипт удаления карточки
+6. Открытие попапа с картинкой
+7. Плавное открытие и закрытие попапов https://stackoverflow.com/questions/3331353/transitions-on-the-css-display-property
+-->
