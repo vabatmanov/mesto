@@ -6,6 +6,33 @@ const inputName = document.querySelector('.popup__input_contains_name');
 const inputHobbies = document.querySelector('.popup__input_contains_hobbies');
 const profileName = document.querySelector('.profile__name');
 const profileDescription = document.querySelector('.profile__description');
+const initialCards = [
+  {
+    name: 'Архыз',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+  },
+  {
+    name: 'Челябинская область',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+  },
+  {
+    name: 'Иваново',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+  },
+  {
+    name: 'Камчатка',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+  },
+  {
+    name: 'Холмогорский район',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+  },
+  {
+    name: 'Байкал',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+  }
+];
+
 
 function closePopupHandl(event) {
   if (event.target.classList.contains('popup')) {
@@ -51,10 +78,6 @@ function addCardItems (list) {
 
     console.log(templateCardItem);
   })
-/*
-addCardItems ([{name: 'YRA', link: 'http'}])
-*/
-
 }
 
 
@@ -62,3 +85,6 @@ editButton.addEventListener('click', openPopup);
 popupClosed.addEventListener('click', closePopup);
 popup.addEventListener('mouseup', closePopupHandl);
 popupForm.addEventListener('submit', submitForm);
+
+//Инициализация Шесть карточек «из коробки»
+addCardItems(initialCards);
