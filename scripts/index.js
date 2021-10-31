@@ -43,7 +43,9 @@ function addCardItems (list) {
     templateCardItem.querySelector('.cards__bin').addEventListener('click', function (evt) {
       evt.target.closest('.cards__item').remove();
     });
-
+    templateCardItem.querySelector('.cards__like').addEventListener('click', function (evt) {
+      evt.target.classList.toggle('cards__like_enable');
+    });
 
     listCards.prepend(templateCardItem);
 
