@@ -1,11 +1,3 @@
-const popup = document.querySelector('.popup')
-const popupClosed = document.querySelector('.popup__button-close');
-const editButton = document.querySelector('.profile__button-edit');
-const popupForm = document.querySelector('.popup__form');
-const inputName = document.querySelector('.popup__input_contains_name');
-const inputHobbies = document.querySelector('.popup__input_contains_hobbies');
-const profileName = document.querySelector('.profile__name');
-const profileDescription = document.querySelector('.profile__description');
 const initialCards = [
   {
     name: 'Архыз',
@@ -33,29 +25,63 @@ const initialCards = [
   }
 ];
 
+// Popup
+const popup = document.querySelectorAll('.popup');
+const popupImage = document.querySelector('.popup__image');
+const popupNameImage = document.querySelector('.popup__name-image');
+const popupProfileEdit = document.querySelector('.popup_profile-edit');
+const popupCardAdd = document.querySelector('.popup_card-add');
+const popupCardOpen = document.querySelector('.popup_card-open');
 
-function closePopupHandl(event) {
+//Button open
+const editButton = document.querySelector('.profile__button-edit');
+const addButton = document.querySelector('.profile__button-add');
+
+//Button close
+const editButtonClose = document.querySelector('.popup__button-close_profile-edit');
+const addButtonClose = document.querySelector('.popup__button-close_card-add');
+const openButtonClose = document.querySelector('.popup__button-close_card-open');
+
+//Forms
+const popupFormEdit = document.querySelector('.popup__form_profile-edit');
+const popupFormAdd = document.querySelector('.popup__form_card-add');
+
+//Input
+const inputName = document.querySelector('.popup__input_contains_name');
+const inputHobbies = document.querySelector('.popup__input_contains_hobbies');
+const inputCardName = document.querySelector('.popup__input_contains_card-name');
+const inputCardLink = document.querySelector('.popup__input_contains_card-link');
+
+const profileName = document.querySelector('.profile__name');
+const profileDescription = document.querySelector('.profile__description');
+
+
+
+function closePopupHandle(event) {
   if (event.target.classList.contains('popup')) {
-    closePopup();
+    togglePopup(event.target);
   }
 }
 
-function closePopup() {
-  popup.classList.remove('popup_open');
+function togglePopup(popup) {
+  popup.classList.toggle('popup_open');
 }
 
-function openPopup() {
-  popup.classList.add('popup_open');
-  inputName.value = profileName.textContent;
-  inputHobbies.value = profileDescription.textContent;
-}
-
-function submitForm(event) {
+function submitFormEdit(event) {
   event.preventDefault();
   profileName.textContent = inputName.value;
   profileDescription.textContent = inputHobbies.value;
-  closePopup();
+  togglePopup(popupProfileEdit);
 }
+function submitFormAdd(event) {
+  event.preventDefault();
+  addCardItems ([{
+    name: inputCardName.value,
+    link: inputCardLink.value
+  }])
+  togglePopup(popupCardAdd);
+}
+
 
 /* Работа №5 */
 function addCardItems (list) {
@@ -67,6 +93,11 @@ function addCardItems (list) {
     templateCardItem.querySelector('.cards__image').alt = 'Изображение ' + item.name;
     templateCardItem.querySelector('.cards__image').src = item.link;
     templateCardItem.querySelector('.cards__caption').textContent = item.name;
+    templateCardItem.querySelector('.cards__image').addEventListener('click', function (evt) {
+      popupImage.src = evt.target.src;
+      popupNameImage.textContent = evt.target.nextElementSibling.textContent;
+      togglePopup(popupCardOpen);
+    })
     templateCardItem.querySelector('.cards__bin').addEventListener('click', function (evt) {
       evt.target.closest('.cards__item').remove();
     });
@@ -75,16 +106,23 @@ function addCardItems (list) {
     });
 
     listCards.prepend(templateCardItem);
-
-    console.log(templateCardItem);
   })
 }
 
 
-editButton.addEventListener('click', openPopup);
-popupClosed.addEventListener('click', closePopup);
-popup.addEventListener('mouseup', closePopupHandl);
-popupForm.addEventListener('submit', submitForm);
-
+popup.forEach((item) => {
+  item.addEventListener('mouseup', closePopupHandle);
+})
+popupFormEdit.addEventListener('submit', submitFormEdit);
+popupFormAdd.addEventListener('submit', submitFormAdd);
+editButton.addEventListener('click', () => {
+  inputName.value = profileName.textContent;
+  inputHobbies.value = profileDescription.textContent;
+  togglePopup(popupProfileEdit);
+});
+addButton.addEventListener('click', () => togglePopup(popupCardAdd));
+editButtonClose.addEventListener('click', () => togglePopup(popupProfileEdit));
+addButtonClose.addEventListener('click', () => togglePopup(popupCardAdd));
+openButtonClose.addEventListener('click', () => togglePopup(popupCardOpen));
 //Инициализация Шесть карточек «из коробки»
 addCardItems(initialCards);
