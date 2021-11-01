@@ -84,17 +84,17 @@
       <div class="popup__content">
         <button class="popup__button-close popup__button-close_card-add" aria-label="Закрыть" type="button"></button>
         <h3 class="popup__caption">Новое место</h3>
-        <form class="popup__form popup__form_card-add" name="addprofile">
+        <form class="popup__form popup__form_card-add" name="addcard">
           <input type="text" class="popup__input popup__input_contains_card-name" name="input-card-name" placeholder="Название">
           <input type="text" class="popup__input popup__input_contains_card-link" name="input-card-link" placeholder="Ссылка на картинку">
-          <button class="popup__send popup__send_card-add" aria-label="Сохранить" type="submit">Сохранить</button>
+          <button class="popup__send popup__send_card-add" aria-label="Сохранить" type="submit">Создать</button>
         </form>
       </div>
     </div>
 
     <div class="popup popup_card-open">
-      <div class="popup__content">
-        <img class="popup__image" src="" alt="">
+      <div class="popup__content popup__content_type_gallery">
+        <img class="popup__image" src="" alt="Изображение">
         <button class="popup__button-close popup__button-close_card-open" aria-label="Закрыть" type="button"></button>
       </div>
     </div>
@@ -103,9 +103,9 @@
   <template id="template-cards-item">
     <li class="cards__item">
       <img class="cards__image" src="" alt="">
-      <button class="cards__bin" aria-label="Удалить" type="button"></button>
       <h2 class="cards__caption"></h2>
       <button class="cards__like" aria-label="Поставить лайк" type="button"></button>
+      <button class="cards__bin" aria-label="Удалить" type="button"></button>
     </li>
   </template>
 

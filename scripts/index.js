@@ -27,6 +27,7 @@ const initialCards = [
 
 // Popup
 const popup = document.querySelectorAll('.popup');
+const popupImage = document.querySelector('.popup__image');
 const popupProfileEdit = document.querySelector('.popup_profile-edit');
 const popupCardAdd = document.querySelector('.popup_card-add');
 const popupCardOpen = document.querySelector('.popup_card-open');
@@ -39,10 +40,6 @@ const addButton = document.querySelector('.profile__button-add');
 const editButtonClose = document.querySelector('.popup__button-close_profile-edit');
 const addButtonClose = document.querySelector('.popup__button-close_card-add');
 const openButtonClose = document.querySelector('.popup__button-close_card-open');
-
-//Button send
-/*const sendButtonProfile = document.querySelector('.popup__send_profile-edit');
-const sendButtonCard = document.querySelector('.popup__send_card-add');*/
 
 //Forms
 const popupFormEdit = document.querySelector('.popup__form_profile-edit');
@@ -60,7 +57,9 @@ const profileDescription = document.querySelector('.profile__description');
 
 
 function closePopupHandle(event) {
-  togglePopup(event.target);
+  if (event.target.classList.contains('popup')) {
+    togglePopup(event.target);
+  }
 }
 
 function togglePopup(popup) {
@@ -93,8 +92,10 @@ function addCardItems (list) {
     templateCardItem.querySelector('.cards__image').alt = 'Изображение ' + item.name;
     templateCardItem.querySelector('.cards__image').src = item.link;
     templateCardItem.querySelector('.cards__caption').textContent = item.name;
-    templateCardItem.querySelector('.cards__image').addEventListener('click', function () {
-      //тут действия при открытии попапа, загрузка картинки и текста.
+    templateCardItem.querySelector('.cards__image').addEventListener('click', function (evt) {
+      popupImage.src = evt.target.src;
+      console.log(evt.target.nextElementSibling.textContent);
+      //тут еще не хабыть про подпись картинки и наверно тег семантический нужен.
       togglePopup(popupCardOpen);
     })
     templateCardItem.querySelector('.cards__bin').addEventListener('click', function (evt) {
