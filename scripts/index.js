@@ -55,8 +55,6 @@ const inputCardLink = document.querySelector('.popup__input_contains_card-link')
 const profileName = document.querySelector('.profile__name');
 const profileDescription = document.querySelector('.profile__description');
 
-
-
 function closePopupHandle(event) {
   if (event.target.classList.contains('popup')) {
     togglePopup(event.target);
@@ -73,21 +71,22 @@ function submitFormEdit(event) {
   profileDescription.textContent = inputHobbies.value;
   togglePopup(popupProfileEdit);
 }
+
 function submitFormAdd(event) {
   event.preventDefault();
   addCardItems ([{
     name: inputCardName.value,
     link: inputCardLink.value
-  }])
+  }]);
+  inputCardName.value = '';
+  inputCardLink.value = '';
   togglePopup(popupCardAdd);
 }
-
 
 /* Работа №5 */
 function addCardItems (list) {
   const templateCard = document.querySelector('#template-cards-item').content;
   const listCards = document.querySelector('.cards');
-
   list.forEach(function (item) {
     const templateCardItem = templateCard.querySelector('.cards__item').cloneNode(true);
     templateCardItem.querySelector('.cards__image').alt = 'Изображение ' + item.name;
@@ -95,6 +94,7 @@ function addCardItems (list) {
     templateCardItem.querySelector('.cards__caption').textContent = item.name;
     templateCardItem.querySelector('.cards__image').addEventListener('click', function (evt) {
       popupImage.src = evt.target.src;
+      popupImage.alt = evt.target.alt;
       popupNameImage.textContent = evt.target.nextElementSibling.textContent;
       togglePopup(popupCardOpen);
     })
@@ -104,11 +104,9 @@ function addCardItems (list) {
     templateCardItem.querySelector('.cards__like').addEventListener('click', function (evt) {
       evt.target.classList.toggle('cards__like_enable');
     });
-
     listCards.prepend(templateCardItem);
   })
 }
-
 
 popup.forEach((item) => {
   item.addEventListener('mouseup', closePopupHandle);
@@ -124,5 +122,6 @@ addButton.addEventListener('click', () => togglePopup(popupCardAdd));
 editButtonClose.addEventListener('click', () => togglePopup(popupProfileEdit));
 addButtonClose.addEventListener('click', () => togglePopup(popupCardAdd));
 openButtonClose.addEventListener('click', () => togglePopup(popupCardOpen));
+
 //Инициализация Шесть карточек «из коробки»
 addCardItems(initialCards);
