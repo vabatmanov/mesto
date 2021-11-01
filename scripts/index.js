@@ -28,6 +28,7 @@ const initialCards = [
 // Popup
 const popup = document.querySelectorAll('.popup');
 const popupImage = document.querySelector('.popup__image');
+const popupNameImage = document.querySelector('.popup__name-image');
 const popupProfileEdit = document.querySelector('.popup_profile-edit');
 const popupCardAdd = document.querySelector('.popup_card-add');
 const popupCardOpen = document.querySelector('.popup_card-open');
@@ -94,8 +95,7 @@ function addCardItems (list) {
     templateCardItem.querySelector('.cards__caption').textContent = item.name;
     templateCardItem.querySelector('.cards__image').addEventListener('click', function (evt) {
       popupImage.src = evt.target.src;
-      console.log(evt.target.nextElementSibling.textContent);
-      //тут еще не хабыть про подпись картинки и наверно тег семантический нужен.
+      popupNameImage.textContent = evt.target.nextElementSibling.textContent;
       togglePopup(popupCardOpen);
     })
     templateCardItem.querySelector('.cards__bin').addEventListener('click', function (evt) {
