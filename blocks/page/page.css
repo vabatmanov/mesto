@@ -2,6 +2,7 @@
   min-width: 320px;
   background-color: #000000;
   padding-top: 45px;
+  min-height: calc(100vh - 45px);
 }
 
 @media screen and (max-width: 523px) {

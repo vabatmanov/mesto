@@ -25,6 +25,9 @@ const initialCards = [
   }
 ];
 
+const templateCard = document.querySelector('#template-cards-item').content;
+const listCards = document.querySelector('.cards');
+
 // Popup
 const popup = document.querySelectorAll('.popup');
 const popupImage = document.querySelector('.popup__image');
@@ -62,7 +65,7 @@ function closePopupHandle(event) {
 }
 
 function togglePopup(popup) {
-  popup.classList.toggle('popup_open');
+  popup.classList.toggle('popup_opened');
 }
 
 function submitFormEdit(event) {
@@ -74,24 +77,36 @@ function submitFormEdit(event) {
 
 function submitFormAdd(event) {
   event.preventDefault();
-  addCardItems ([{
+  createCards ({
     name: inputCardName.value,
     link: inputCardLink.value
-  }]);
+  });
   inputCardName.value = '';
   inputCardLink.value = '';
   togglePopup(popupCardAdd);
 }
 
-/* Работа №5 */
-function addCardItems (list) {
-  const templateCard = document.querySelector('#template-cards-item').content;
-  const listCards = document.querySelector('.cards');
-  list.forEach(function (item) {
+//добавить карту
+function addCard(card) {
+  listCards.prepend(card);
+}
+
+/* Сформировать карту
+Принимает объект {name,link} или массив объектов [{name,link},{name,link},...] */
+function createCards(item) {
+  if (Array.isArray(item)) {
+    item.forEach(function (objectCard) {
+      addCard(createFormCard(objectCard));
+    })
+  } else {
+    addCard(createFormCard(item));
+  }
+
+  function createFormCard(card) {
     const templateCardItem = templateCard.querySelector('.cards__item').cloneNode(true);
-    templateCardItem.querySelector('.cards__image').alt = 'Изображение ' + item.name;
-    templateCardItem.querySelector('.cards__image').src = item.link;
-    templateCardItem.querySelector('.cards__caption').textContent = item.name;
+    templateCardItem.querySelector('.cards__image').alt = 'Изображение ' + card.name;
+    templateCardItem.querySelector('.cards__image').src = card.link;
+    templateCardItem.querySelector('.cards__caption').textContent = card.name;
     templateCardItem.querySelector('.cards__image').addEventListener('click', function (evt) {
       popupImage.src = evt.target.src;
       popupImage.alt = evt.target.alt;
@@ -104,8 +119,8 @@ function addCardItems (list) {
     templateCardItem.querySelector('.cards__like').addEventListener('click', function (evt) {
       evt.target.classList.toggle('cards__like_enable');
     });
-    listCards.prepend(templateCardItem);
-  })
+    return templateCardItem;
+  }
 }
 
 popup.forEach((item) => {
@@ -124,4 +139,4 @@ addButtonClose.addEventListener('click', () => togglePopup(popupCardAdd));
 openButtonClose.addEventListener('click', () => togglePopup(popupCardOpen));
 
 //Инициализация Шесть карточек «из коробки»
-addCardItems(initialCards);
+createCards(initialCards);
