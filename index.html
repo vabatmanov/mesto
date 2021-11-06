@@ -37,8 +37,14 @@
         <button class="popup__button-close popup__button-close_profile-edit" aria-label="Закрыть" type="button"></button>
         <h3 class="popup__caption">Редактировать профиль</h3>
         <form class="popup__form popup__form_profile-edit" name="editprofile">
-          <input type="text" class="popup__input popup__input_contains_name" name="input-profile-name">
-          <input type="text" class="popup__input popup__input_contains_hobbies" name="input-profile-hobbies">
+          <label class="popup__field">
+            <input type="text" class="popup__input popup__input_contains_name" name="input-profile-name">
+            <span class="popup__input-error input-profile-name-error">Вы пропустили это поле.</span>
+          </label>
+          <label class="popup__field">
+            <input type="text" class="popup__input popup__input_contains_hobbies" name="input-profile-hobbies">
+            <span class="popup__input-error input-profile-hobbies-error">2</span>
+          </label>
           <button class="popup__send popup__send_profile-edit" aria-label="Сохранить" type="submit">Сохранить</button>
         </form>
       </div>
@@ -49,8 +55,14 @@
         <button class="popup__button-close popup__button-close_card-add" aria-label="Закрыть" type="button"></button>
         <h3 class="popup__caption">Новое место</h3>
         <form class="popup__form popup__form_card-add" name="addcard">
-          <input type="text" class="popup__input popup__input_contains_card-name" name="input-card-name" placeholder="Название">
-          <input type="text" class="popup__input popup__input_contains_card-link" name="input-card-link" placeholder="Ссылка на картинку">
+          <label class="popup__field">
+            <input type="text" class="popup__input popup__input_contains_card-name" name="input-card-name" placeholder="Название">
+            <span class="popup__input-error input-card-name-error">Вы пропустили это поле.</span>
+          </label>
+          <label class="popup__field">
+            <input type="text" class="popup__input popup__input_contains_card-link" name="input-card-link" placeholder="Ссылка на картинку">
+            <span class="popup__input-error input-card-link-error">4</span>
+          </label>
           <button class="popup__send popup__send_card-add" aria-label="Сохранить" type="submit">Создать</button>
         </form>
       </div>
@@ -73,6 +85,7 @@
       <button class="cards__bin" aria-label="Удалить" type="button"></button>
     </li>
   </template>
+  <script src="scripts/validate.js"></script>
   <script src="scripts/index.js"></script>
 </body>
 </html>

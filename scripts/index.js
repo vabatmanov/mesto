@@ -140,3 +140,12 @@ openButtonClose.addEventListener('click', () => togglePopup(popupCardOpen));
 
 //Инициализация Шесть карточек «из коробки»
 createCards(initialCards);
+
+enableValidation({
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__send',
+  inactiveButtonClass: 'popup__send_disabled',
+  inputErrorClass: 'popup__input_type_error',
+  errorClass: 'popup__input-error_visible'
+});
