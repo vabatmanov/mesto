@@ -35,14 +35,14 @@ function toggleButtonState(inputList, buttonElement, validDate) {
   }
 }
 
-const showInputError = (formElement, inputElement, errorMessage, validDate) => {
+function showInputError (formElement, inputElement, errorMessage, validDate) {
   const errorElement = formElement.querySelector(`.${inputElement.name}-error`);
   inputElement.classList.add(validDate.inputErrorClass);
   errorElement.textContent = errorMessage;
   errorElement.classList.add(validDate.errorClass);
 };
 
-const hideInputError = (formElement, inputElement, validDate) => {
+function hideInputError (formElement, inputElement, validDate) {
   const errorElement = formElement.querySelector(`.${inputElement.name}-error`);
   inputElement.classList.remove(validDate.inputErrorClass);
   errorElement.classList.remove(validDate.errorClass);
