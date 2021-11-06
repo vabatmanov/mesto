@@ -38,11 +38,11 @@
         <h3 class="popup__caption">Редактировать профиль</h3>
         <form class="popup__form popup__form_profile-edit" name="editprofile">
           <label class="popup__field">
-            <input type="text" class="popup__input popup__input_contains_name" name="input-profile-name">
-            <span class="popup__input-error input-profile-name-error">Вы пропустили это поле.</span>
+            <input type="text" class="popup__input popup__input_contains_name" name="input-profile-name" required minlength="2" maxlength="40" value=":)">
+            <span class="popup__input-error input-profile-name-error">1</span>
           </label>
           <label class="popup__field">
-            <input type="text" class="popup__input popup__input_contains_hobbies" name="input-profile-hobbies">
+            <input type="text" class="popup__input popup__input_contains_hobbies" name="input-profile-hobbies" required minlength="2" maxlength="200" value=":)">
             <span class="popup__input-error input-profile-hobbies-error">2</span>
           </label>
           <button class="popup__send popup__send_profile-edit" aria-label="Сохранить" type="submit">Сохранить</button>
@@ -56,11 +56,11 @@
         <h3 class="popup__caption">Новое место</h3>
         <form class="popup__form popup__form_card-add" name="addcard">
           <label class="popup__field">
-            <input type="text" class="popup__input popup__input_contains_card-name" name="input-card-name" placeholder="Название">
-            <span class="popup__input-error input-card-name-error">Вы пропустили это поле.</span>
+            <input type="text" class="popup__input popup__input_contains_card-name" name="input-card-name" placeholder="Название" required minlength="2" maxlength="30">
+            <span class="popup__input-error input-card-name-error">3</span>
           </label>
           <label class="popup__field">
-            <input type="text" class="popup__input popup__input_contains_card-link" name="input-card-link" placeholder="Ссылка на картинку">
+            <input type="url" class="popup__input popup__input_contains_card-link" name="input-card-link" placeholder="Ссылка на картинку" required>
             <span class="popup__input-error input-card-link-error">4</span>
           </label>
           <button class="popup__send popup__send_card-add" aria-label="Сохранить" type="submit">Создать</button>
