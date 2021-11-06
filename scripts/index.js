@@ -59,8 +59,14 @@ const profileName = document.querySelector('.profile__name');
 const profileDescription = document.querySelector('.profile__description');
 
 function closePopupHandle(event) {
-  if (event.target.classList.contains('popup')) {
-    togglePopup(event.target);
+  if (event.type === "mousedown") {
+    event.target.classList.contains('popup') ? togglePopup(event.target) : undefined;
+  } else {
+    if (event.key === "Escape"){
+      (Array.from(popup)).forEach(function (popup) {
+        popup.classList.contains('popup_opened') ? togglePopup(popup): undefined;
+      })
+    }
   }
 }
 
@@ -81,8 +87,7 @@ function submitFormAdd(event) {
     name: inputCardName.value,
     link: inputCardLink.value
   });
-  inputCardName.value = '';
-  inputCardLink.value = '';
+  event.target.reset();
   togglePopup(popupCardAdd);
 }
 
@@ -125,7 +130,9 @@ function createCards(item) {
 
 popup.forEach((item) => {
   item.addEventListener('mousedown', closePopupHandle);
-})
+  document.addEventListener('keydown', closePopupHandle);
+});
+
 popupFormEdit.addEventListener('submit', submitFormEdit);
 popupFormAdd.addEventListener('submit', submitFormAdd);
 editButton.addEventListener('click', () => {
