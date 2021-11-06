@@ -124,7 +124,7 @@ function createCards(item) {
 }
 
 popup.forEach((item) => {
-  item.addEventListener('mouseup', closePopupHandle);
+  item.addEventListener('mousedown', closePopupHandle);
 })
 popupFormEdit.addEventListener('submit', submitFormEdit);
 popupFormAdd.addEventListener('submit', submitFormAdd);
