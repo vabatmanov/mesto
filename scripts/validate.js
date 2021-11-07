@@ -57,7 +57,7 @@ function checkInputValidity (formElement, inputElement, validDate) {
   }
 };
 
-function checkFormValidity (formElement, validDate) {
+function clearFormValidation (formElement, validDate) {
   const inputList = Array.from(formElement.querySelectorAll(validDate.inputSelector));
   inputList.forEach(function (inputElement) {
     hideInputError(formElement, inputElement, validDate);
