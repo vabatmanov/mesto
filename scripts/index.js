@@ -12,11 +12,8 @@ const listCards = document.querySelector('.cards');
 
 // Popup
 const popup = document.querySelectorAll('.popup');
-
 const popupProfileEdit = document.querySelector('.popup_profile-edit');
-
 const popupCardAdd = document.querySelector('.popup_card-add');
-
 const popupCardOpen = document.querySelector('.popup_card-open');
 const popupImage = document.querySelector('.popup__image');
 const popupNameImage = document.querySelector('.popup__name-image');
@@ -39,7 +36,6 @@ const inputName = document.querySelector('.popup__input_contains_name');
 const inputHobbies = document.querySelector('.popup__input_contains_hobbies');
 const inputCardName = document.querySelector('.popup__input_contains_card-name');
 const inputCardLink = document.querySelector('.popup__input_contains_card-link');
-
 const profileName = document.querySelector('.profile__name');
 const profileDescription = document.querySelector('.profile__description');
 
@@ -71,7 +67,7 @@ function closeEscapePopup(element) {
   }
 }
 
-//Функция отправки формы
+//Функция отправки формы "Изменения профиля"
 function submitFormEdit(event) {
   event.preventDefault();
   profileName.textContent = inputName.value;
@@ -79,6 +75,7 @@ function submitFormEdit(event) {
   closePopup(popupProfileEdit);
 }
 
+//Функция отправки формы "Добавить карточку"
 function submitFormAdd(event) {
   event.preventDefault();
   createCards ({
@@ -112,7 +109,7 @@ function createCards(item) {
     templateCardItem.querySelector('.cards__image').addEventListener('click', function (evt) {
       popupImage.src = evt.target.src;
       popupImage.alt = evt.target.alt;
-      popupNameImage.textContent = (evt.target.parentElement).querySelector('.cards__caption').textContent;   //evt.target.nextElementSibling.textContent;
+      popupNameImage.textContent = (evt.target.parentElement).querySelector('.cards__caption').textContent;
       openPopup(popupCardOpen);
     })
     templateCardItem.querySelector('.cards__bin').addEventListener('click', function (evt) {
@@ -153,80 +150,3 @@ popupFormAdd.addEventListener('submit', submitFormAdd);
 //Инициализация Шесть карточек «из коробки»
 createCards(initialCards);
 enableValidation(validDate);
-
-
-
-/*
-
-function closePopupHandle(event) {
-  if (event.type === "mousedown") {
-    event.target.classList.contains('popup') ? togglePopup(event.target) : undefined;
-  } else {
-    if (event.key === "Escape"){
-      (Array.from(popup)).forEach(function (popup) {
-        popup.classList.contains('popup_opened') ? togglePopup(popup): undefined;
-      })
-    }
-  }
-}
-
-function togglePopup(popup) {
-  if (popup.classList.contains('popup_opened') && (!popup.classList.contains('popup_card-open'))) {
-    defaultFormFields(popup);
-  }
-  popup.classList.toggle('popup_opened');
-}
-
-function defaultFormFields (popup) {
-  const popupForm = popup.querySelector('.popup__form');
-  if (popupForm.name === 'editprofile') {
-    inputName.value = ':)';
-    inputHobbies.value = ':)';
-    checkFormValidity (popupForm, validDate);
-  } else {
-    popupForm.reset();
-    checkFormValidity (popupForm, validDate);
-  }
-}
-
-function submitFormEdit(event) {
-  event.preventDefault();
-  profileName.textContent = inputName.value;
-  profileDescription.textContent = inputHobbies.value;
-  togglePopup(popupProfileEdit);
-}
-
-function submitFormAdd(event) {
-  event.preventDefault();
-  createCards ({
-    name: inputCardName.value,
-    link: inputCardLink.value
-  });
-  togglePopup(popupCardAdd);
-}
-
-
-
-
-
-
-
-
-
-
-
-
-popupFormEdit.addEventListener('submit', submitFormEdit);
-popupFormAdd.addEventListener('submit', submitFormAdd);
-
-editButton.addEventListener('click', () => {
-  inputName.value = profileName.textContent;
-  inputHobbies.value = profileDescription.textContent;
-  togglePopup(popupProfileEdit);
-});
-addButton.addEventListener('click', () => togglePopup(popupCardAdd));
-
-editButtonClose.addEventListener('click', () => togglePopup(popupProfileEdit));
-addButtonClose.addEventListener('click', () => togglePopup(popupCardAdd));
-openButtonClose.addEventListener('click', () => togglePopup(popupCardOpen));
- */
