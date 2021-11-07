@@ -25,6 +25,15 @@ const initialCards = [
   }
 ];
 
+const validDate = {
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__send',
+  inactiveButtonClass: 'popup__send_disabled',
+  inputErrorClass: 'popup__input_type_error',
+  errorClass: 'popup__input-error_visible'
+};
+
 const templateCard = document.querySelector('#template-cards-item').content;
 const listCards = document.querySelector('.cards');
 
@@ -71,7 +80,22 @@ function closePopupHandle(event) {
 }
 
 function togglePopup(popup) {
+  if (popup.classList.contains('popup_opened') && (!popup.classList.contains('popup_card-open'))) {
+    defaultFormFields(popup);
+  }
   popup.classList.toggle('popup_opened');
+}
+
+function defaultFormFields (popup) {
+  const popupForm = popup.querySelector('.popup__form');
+  if (popupForm.name === 'editprofile') {
+    inputName.value = ':)';
+    inputHobbies.value = ':)';
+    checkFormValidity (popupForm, validDate);
+  } else {
+    popupForm.reset();
+    checkFormValidity (popupForm, validDate);
+  }
 }
 
 function submitFormEdit(event) {
@@ -87,7 +111,6 @@ function submitFormAdd(event) {
     name: inputCardName.value,
     link: inputCardLink.value
   });
-  event.target.reset();
   togglePopup(popupCardAdd);
 }
 
@@ -147,12 +170,5 @@ openButtonClose.addEventListener('click', () => togglePopup(popupCardOpen));
 
 //Инициализация Шесть карточек «из коробки»
 createCards(initialCards);
+enableValidation(validDate);
 
-enableValidation({
-  formSelector: '.popup__form',
-  inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__send',
-  inactiveButtonClass: 'popup__send_disabled',
-  inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__input-error_visible'
-});

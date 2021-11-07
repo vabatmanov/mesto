@@ -56,3 +56,11 @@ function checkInputValidity (formElement, inputElement, validDate) {
     hideInputError(formElement, inputElement, validDate);
   }
 };
+
+function checkFormValidity (formElement, validDate) {
+  const inputList = Array.from(formElement.querySelectorAll(validDate.inputSelector));
+  inputList.forEach(function (inputElement) {
+    hideInputError(formElement, inputElement, validDate);
+  })
+  toggleButtonState(inputList, formElement.querySelector(validDate.submitButtonSelector), validDate);
+}
