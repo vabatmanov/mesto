@@ -109,7 +109,7 @@ function createCards(item) {
     templateCardItem.querySelector('.cards__image').addEventListener('click', function (evt) {
       popupImage.src = evt.target.src;
       popupImage.alt = evt.target.alt;
-      popupNameImage.textContent = (evt.target.parentElement).querySelector('.cards__caption').textContent;
+      popupNameImage.textContent = evt.target.closest('.cards__item').querySelector('.cards__caption').textContent;
       openPopup(popupCardOpen);
     })
     templateCardItem.querySelector('.cards__bin').addEventListener('click', function (evt) {
