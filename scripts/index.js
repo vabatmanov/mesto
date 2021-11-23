@@ -84,14 +84,14 @@ function submitFormAdd(event) {
   });
   closePopup(popupCardAdd);
 }
-
+/*
 //добавить карту
 function addCard(card) {
   listCards.prepend(card);
 }
 
-/* Сформировать карту
-Принимает объект {name,link} или массив объектов [{name,link},{name,link},...] */
+/!* Сформировать карту
+Принимает объект {name,link} или массив объектов [{name,link},{name,link},...] *!/
 function createCards(item) {
   if (Array.isArray(item)) {
     item.forEach(function (objectCard) {
@@ -120,7 +120,7 @@ function createCards(item) {
     });
     return templateCardItem;
   }
-}
+}*/
 
 //События кнопок закрыть
 editButtonClose.addEventListener('click', () => closePopup(popupProfileEdit));
@@ -148,5 +148,5 @@ popupFormAdd.addEventListener('submit', submitFormAdd);
 
 
 //Инициализация Шесть карточек «из коробки»
-createCards(initialCards);
-enableValidation(validDate);
+//createCards(initialCards);
+//enableValidation(validDate);
