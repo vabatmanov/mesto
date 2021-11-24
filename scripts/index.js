@@ -1,3 +1,5 @@
+import Card from "./Card.js";
+
 const validDate = {
   formSelector: '.popup__form',
   inputSelector: '.popup__input',
@@ -6,6 +8,15 @@ const validDate = {
   inputErrorClass: 'popup__input_type_error',
   errorClass: 'popup__input-error_visible'
 };
+
+const conf = {
+  cardItem: '.cards__item',
+  cardsImage: '.cards__image',
+  cardsCaption: '.cards__caption',
+  cardBin: '.cards__bin',
+  cardLike: '.cards__like',
+  cardLikeEnable: 'cards__like_enable'
+}
 
 const templateCard = document.querySelector('#template-cards-item').content;
 const listCards = document.querySelector('.cards');
@@ -84,25 +95,30 @@ function submitFormAdd(event) {
   });
   closePopup(popupCardAdd);
 }
-/*
+
 //добавить карту
 function addCard(card) {
   listCards.prepend(card);
 }
 
-/!* Сформировать карту
-Принимает объект {name,link} или массив объектов [{name,link},{name,link},...] *!/
+
+/* Сформировать карту
+Принимает объект {name,link} или массив объектов [{name,link},{name,link},...] */
 function createCards(item) {
   if (Array.isArray(item)) {
     item.forEach(function (objectCard) {
-      addCard(createFormCard(objectCard));
+      const card = new Card(objectCard, templateCard, conf);
+      addCard(card.createCard());
     })
   } else {
-    addCard(createFormCard(item));
+    const card = new Card(item, templateCard, conf);
+    addCard(card.createCard());
   }
+}
 
+/*
   function createFormCard(card) {
-    const templateCardItem = templateCard.querySelector('.cards__item').cloneNode(true);
+    const templateCardItem  = templateCard.querySelector('.cards__item').cloneNode(true);
     templateCardItem.querySelector('.cards__image').alt = 'Изображение ' + card.name;
     templateCardItem.querySelector('.cards__image').src = card.link;
     templateCardItem.querySelector('.cards__caption').textContent = card.name;
@@ -121,6 +137,8 @@ function createCards(item) {
     return templateCardItem;
   }
 }*/
+
+
 
 //События кнопок закрыть
 editButtonClose.addEventListener('click', () => closePopup(popupProfileEdit));
@@ -148,5 +166,5 @@ popupFormAdd.addEventListener('submit', submitFormAdd);
 
 
 //Инициализация Шесть карточек «из коробки»
-//createCards(initialCards);
+createCards(initialCards);
 //enableValidation(validDate);
