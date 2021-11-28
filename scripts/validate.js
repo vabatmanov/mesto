@@ -17,7 +17,7 @@ function setEventListeners(formElement, validDate) {
       checkInputValidity(formElement, inputElement, validDate);
     });
   });
-};
+}
 
 function hasInvalidInput(inputList) {
   return inputList.some((inputElement) => {
@@ -40,14 +40,14 @@ function showInputError (formElement, inputElement, errorMessage, validDate) {
   inputElement.classList.add(validDate.inputErrorClass);
   errorElement.textContent = errorMessage;
   errorElement.classList.add(validDate.errorClass);
-};
+}
 
 function hideInputError (formElement, inputElement, validDate) {
   const errorElement = formElement.querySelector(`.${inputElement.name}-error`);
   inputElement.classList.remove(validDate.inputErrorClass);
   errorElement.classList.remove(validDate.errorClass);
   errorElement.textContent = '';
-};
+}
 
 function checkInputValidity (formElement, inputElement, validDate) {
   if (!inputElement.validity.valid) {
@@ -55,7 +55,7 @@ function checkInputValidity (formElement, inputElement, validDate) {
   } else {
     hideInputError(formElement, inputElement, validDate);
   }
-};
+}
 
 function clearFormValidation (formElement, validDate) {
   const inputList = Array.from(formElement.querySelectorAll(validDate.inputSelector));
