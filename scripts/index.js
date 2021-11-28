@@ -1,5 +1,6 @@
 import Card from "./Card.js";
 import FormValidator from "./FormValidator.js";
+import initialCards from "./initial-сards.js"
 
 const validDate = {
   formSelector: '.popup__form',
@@ -93,8 +94,6 @@ function addCard(card) {
   listCards.prepend(card);
 }
 
-
-
 /* Сформировать карту
 Принимает объект {name,link} или массив объектов [{name,link},{name,link},...] */
 function createCards(item) {
@@ -146,11 +145,8 @@ const conf = {
   openPopup: openPopup
 }
 
-
-
 //Инициализация Шесть карточек «из коробки»
 createCards(initialCards);
-//enableValidation();
 const formValidatorAdd = new FormValidator(validDate, popupFormAdd);
 const formValidatorEdit = new FormValidator(validDate, popupFormEdit);
 formValidatorAdd.enableValidation();
