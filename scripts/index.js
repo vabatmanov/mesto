@@ -99,11 +99,11 @@ function addCard(card) {
 function createCards(item) {
   if (Array.isArray(item)) {
     item.forEach(function (objectCard) {
-      const card = new Card(objectCard, templateCard, conf, openPopup);
+      const card = new Card(objectCard, templateCard, conf);
       addCard(card.createCard());
     })
   } else {
-    const card = new Card(item, templateCard, conf, openPopup);
+    const card = new Card(item, templateCard, conf);
     addCard(card.createCard());
   }
 }
