@@ -1,4 +1,5 @@
 import Card from "./Card.js";
+import FormValidator from "./FormValidator.js";
 
 const validDate = {
   formSelector: '.popup__form',
@@ -7,10 +8,7 @@ const validDate = {
   inactiveButtonClass: 'popup__send_disabled',
   inputErrorClass: 'popup__input_type_error',
   errorClass: 'popup__input-error_visible'
-};
-
-
-
+}
 
 const templateCard = document.querySelector('#template-cards-item').content;
 const listCards = document.querySelector('.cards');
@@ -120,14 +118,14 @@ openButtonClose.addEventListener('click', () => closePopup(popupCardOpen));
 editButton.addEventListener('click', () => {
   inputName.value = profileName.textContent;
   inputHobbies.value = profileDescription.textContent;
-  clearFormValidation(popupProfileEdit, validDate);
+  formValidatorEdit.clearFormValidation();
   openPopup(popupProfileEdit);
 });
 
 //Событие открытия окна добавление карточки
 addButton.addEventListener('click', () => {
   popupFormAdd.reset();
-  clearFormValidation(popupCardAdd, validDate);
+  formValidatorAdd.clearFormValidation();
   openPopup(popupCardAdd)
 });
 
@@ -152,4 +150,8 @@ const conf = {
 
 //Инициализация Шесть карточек «из коробки»
 createCards(initialCards);
-//enableValidation(validDate);
+//enableValidation();
+const formValidatorAdd = new FormValidator(validDate, popupFormAdd);
+const formValidatorEdit = new FormValidator(validDate, popupFormEdit);
+formValidatorAdd.enableValidation();
+formValidatorEdit.enableValidation();
