@@ -7,6 +7,7 @@ function enableValidation(validDate) {
     setEventListeners(formElement,validDate);
   });
 }
+
 function setEventListeners(formElement, validDate) {
   const buttonElement = formElement.querySelector(validDate.submitButtonSelector);
   const inputList = Array.from(formElement.querySelectorAll(validDate.inputSelector));
