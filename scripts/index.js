@@ -1,6 +1,6 @@
 import Card from "./Card.js";
 import FormValidator from "./FormValidator.js";
-import initialCards from "./initial-сards.js"
+import initialCards from "./initialСards.js"
 
 const validDate = {
   formSelector: '.popup__form',
@@ -82,7 +82,7 @@ function submitFormEdit(event) {
 //Функция отправки формы "Добавить карточку"
 function submitFormAdd(event) {
   event.preventDefault();
-  createCards ({
+  initCards ({
     name: inputCardName.value,
     link: inputCardLink.value
   });
@@ -94,19 +94,25 @@ function addCard(card) {
   listCards.prepend(card);
 }
 
-/* Сформировать карту
-Принимает объект {name,link} или массив объектов [{name,link},{name,link},...] */
+//Генерация карты
 function createCards(item) {
+  const card = new Card(item, templateCard, conf);
+  return card.createCard()
+}
+
+/* Инициализация карт
+Принимает объект {name,link} или массив объектов [{name,link},{name,link},...] */
+function initCards(item) {
   if (Array.isArray(item)) {
     item.forEach(function (objectCard) {
-      const card = new Card(objectCard, templateCard, conf);
-      addCard(card.createCard());
+      addCard(createCards(objectCard));
     })
   } else {
-    const card = new Card(item, templateCard, conf);
-    addCard(card.createCard());
+    addCard(createCards(item));
   }
 }
+
+
 
 //События кнопок закрыть
 editButtonClose.addEventListener('click', () => closePopup(popupProfileEdit));
@@ -146,7 +152,7 @@ const conf = {
 }
 
 //Инициализация Шесть карточек «из коробки»
-createCards(initialCards);
+initCards(initialCards);
 const formValidatorAdd = new FormValidator(validDate, popupFormAdd);
 const formValidatorEdit = new FormValidator(validDate, popupFormEdit);
 formValidatorAdd.enableValidation();
