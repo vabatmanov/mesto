@@ -1,5 +1,15 @@
+export const templateCard = document.querySelector('#template-cards-item').content;
+export const containertCards = document.querySelector('.cards');
 
 
+export const configCard = {
+  cardItem: '.cards__item',
+  cardsImage: '.cards__image',
+  cardsCaption: '.cards__caption',
+  cardBin: '.cards__bin',
+  cardLike: '.cards__like',
+  cardLikeEnable: 'cards__like_enable',
+}
 
 
 export const validDate = {

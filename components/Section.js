@@ -4,7 +4,7 @@ export default class Section {
     // Свойство renderer — это функция, которая отвечает за создание и отрисовку данных на странице.
     this._items = items;
     this._renderer = renderer;
-    this._container = document.querySelector(containerSelector); //тут исправить, пусть приходит константа
+    this._container = containerSelector; //тут исправить, пусть приходит константа
   }
 
   addItem(element) {

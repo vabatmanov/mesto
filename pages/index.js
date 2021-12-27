@@ -1,9 +1,23 @@
 import Card from "../components/Card.js";
-import FormValidator from "../components/FormValidator.js";
-import initialCards from "../data/initialСards.js"
-import {} from '../utils/constants';
+import Section from "../components/Section.js";
 
+//import FormValidator from "../components/FormValidator.js";
+import {
+  cards,
+  templateCard,
+  configCard,
+  containertCards
+} from '../utils/constants.js';
 
+const cardList = new Section({
+  items: cards,
+  renderer: (item) => {
+    const card = new Card(item, templateCard, configCard);
+    cardList.addItem(card.createCard());
+  }
+},containertCards);
+
+cardList.renderer();
 /*
 const templateCard = document.querySelector('#template-cards-item').content;
 const listCards = document.querySelector('.cards');
@@ -146,11 +160,11 @@ const conf = {
   popupCardOpen: popupCardOpen,
   openPopup: openPopup
 }
-*/
+
 
 //Инициализация Шесть карточек «из коробки»
 initCards(initialCards);
-
+*/
 /*const formValidatorAdd = new FormValidator(validDate, popupFormAdd);
 const formValidatorEdit = new FormValidator(validDate, popupFormEdit);
 formValidatorAdd.enableValidation();

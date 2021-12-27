@@ -12,13 +12,13 @@ export default class Card {
   }
 
   _setEvent() {
-    this._card.querySelector(this._conf.cardsImage).addEventListener('click', (evt) => {
+/*    this._card.querySelector(this._conf.cardsImage).addEventListener('click', (evt) => {
       this._conf.popupImage.src = evt.target.src;
       this._conf.popupImage.alt = evt.target.alt;
       this._conf.popupNameImage.textContent = evt.target.closest(this._conf.cardItem).querySelector(this._conf.cardsCaption).textContent;
       this._conf.openPopup(this._conf.popupCardOpen);
     })
-
+*/
     this._card.querySelector(this._conf.cardBin).addEventListener('click', (evt) => {
       evt.target.closest(this._conf.cardItem).remove();
     });
