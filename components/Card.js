@@ -19,6 +19,10 @@ export default class Card {
       this._conf.openPopup(this._conf.popupCardOpen);
     })
 */
+    this._card.querySelector(this._conf.cardsImage).addEventListener('click', (evt) => {
+      //Тут добавить функцию колбэк из PopupWithForm Open.
+    })
+
     this._card.querySelector(this._conf.cardBin).addEventListener('click', (evt) => {
       evt.target.closest(this._conf.cardItem).remove();
     });

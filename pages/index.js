@@ -1,12 +1,18 @@
 import Card from "../components/Card.js";
 import Section from "../components/Section.js";
+//import Popup from "../components/Popup.js";
+import PopupWithForm from "../components/PopupWithForm.js";
 
 //import FormValidator from "../components/FormValidator.js";
 import {
   cards,
   templateCard,
   configCard,
-  containertCards
+  containertCards,
+  popupProfileEdit,
+  popupCardAdd,
+  popupCardOpen
+
 } from '../utils/constants.js';
 
 const cardList = new Section({
@@ -18,6 +24,12 @@ const cardList = new Section({
 },containertCards);
 
 cardList.renderer();
+
+const defaultPopup = new PopupWithForm(popupCardOpen);
+defaultPopup.setEventListeners();
+defaultPopup.open("https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg","Архыз");
+
+
 /*
 const templateCard = document.querySelector('#template-cards-item').content;
 const listCards = document.querySelector('.cards');
