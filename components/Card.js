@@ -1,4 +1,4 @@
-class Card {
+export default class Card {
   constructor(objectCard, templateCard, conf) {
     this._conf = conf;
     this._card = templateCard.querySelector(this._conf.cardItem).cloneNode(true);;
@@ -35,4 +35,3 @@ class Card {
   }
 
 }
-export default Card;

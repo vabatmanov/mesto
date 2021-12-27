@@ -1,16 +1,10 @@
-import Card from "./Card.js";
-import FormValidator from "./FormValidator.js";
-import initialCards from "./initialСards.js"
+import Card from "../components/Card.js";
+import FormValidator from "../components/FormValidator.js";
+import initialCards from "../data/initialСards.js"
+import {} from '../utils/constants';
 
-const validDate = {
-  formSelector: '.popup__form',
-  inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__send',
-  inactiveButtonClass: 'popup__send_disabled',
-  inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__input-error_visible'
-}
 
+/*
 const templateCard = document.querySelector('#template-cards-item').content;
 const listCards = document.querySelector('.cards');
 
@@ -42,7 +36,9 @@ const inputCardName = document.querySelector('.popup__input_contains_card-name')
 const inputCardLink = document.querySelector('.popup__input_contains_card-link');
 const profileName = document.querySelector('.profile__name');
 const profileDescription = document.querySelector('.profile__description');
+*/
 
+/*
 //Открыть popup
 function openPopup(elementPopup) {
   elementPopup.classList.add('popup_opened');
@@ -100,8 +96,8 @@ function createCards(item) {
   return card.createCard()
 }
 
-/* Инициализация карт
-Принимает объект {name,link} или массив объектов [{name,link},{name,link},...] */
+/!* Инициализация карт
+Принимает объект {name,link} или массив объектов [{name,link},{name,link},...] *!/
 function initCards(item) {
   if (Array.isArray(item)) {
     item.forEach(function (objectCard) {
@@ -150,10 +146,12 @@ const conf = {
   popupCardOpen: popupCardOpen,
   openPopup: openPopup
 }
+*/
 
 //Инициализация Шесть карточек «из коробки»
 initCards(initialCards);
-const formValidatorAdd = new FormValidator(validDate, popupFormAdd);
+
+/*const formValidatorAdd = new FormValidator(validDate, popupFormAdd);
 const formValidatorEdit = new FormValidator(validDate, popupFormEdit);
 formValidatorAdd.enableValidation();
-formValidatorEdit.enableValidation();
+formValidatorEdit.enableValidation();*/
