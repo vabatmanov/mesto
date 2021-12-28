@@ -1,7 +1,6 @@
 import Card from "../components/Card.js";
 import Section from "../components/Section.js";
-//import Popup from "../components/Popup.js";
-import PopupWithForm from "../components/PopupWithForm.js";
+import PopupWithImage from "../components/PopupWithImage.js";
 
 //import FormValidator from "../components/FormValidator.js";
 import {
@@ -15,19 +14,29 @@ import {
 
 } from '../utils/constants.js';
 
+const popupWithImage = new PopupWithImage(popupCardOpen);
+popupWithImage.setEventListeners();
+
+function openPopupWithImage(objectCard) {
+  popupWithImage.open(objectCard.link, objectCard.name);
+}
+
+
+//Генерация карты
+function createCards(item) {
+  const card = new Card(item, templateCard, configCard, openPopupWithImage);
+  return card.createCard();
+}
+
+
 const cardList = new Section({
   items: cards,
   renderer: (item) => {
-    const card = new Card(item, templateCard, configCard);
-    cardList.addItem(card.createCard());
+    cardList.addItem(createCards(item));
   }
 },containertCards);
 
 cardList.renderer();
-
-const defaultPopup = new PopupWithForm(popupCardOpen);
-defaultPopup.setEventListeners();
-defaultPopup.open("https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg","Архыз");
 
 
 /*
