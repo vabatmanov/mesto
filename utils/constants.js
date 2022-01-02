@@ -4,6 +4,10 @@ export const popupProfileEdit = document.querySelector('.popup_profile-edit');
 export const popupCardAdd = document.querySelector('.popup_card-add');
 export const popupCardOpen = document.querySelector('.popup_card-open');
 export const addButton = document.querySelector('.profile__button-add');
+export const editButton = document.querySelector('.profile__button-edit');
+export const profileName = document.querySelector('.profile__name');
+export const profileDescription = document.querySelector('.profile__description');
+
 
 
 export const configCard = {
