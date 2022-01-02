@@ -1,16 +1,19 @@
 import Card from "../components/Card.js";
 import Section from "../components/Section.js";
 import PopupWithImage from "../components/PopupWithImage.js";
+import PopupWithForm from "../components/PopupWithForm.js";
 
 //import FormValidator from "../components/FormValidator.js";
 import {
   cards,
   templateCard,
   configCard,
+  validDate,
   containertCards,
   popupProfileEdit,
   popupCardAdd,
-  popupCardOpen
+  popupCardOpen,
+  addButton
 
 } from '../utils/constants.js';
 
@@ -35,6 +38,21 @@ const cardList = new Section({
     cardList.addItem(createCards(item));
   }
 },containertCards);
+
+//Функция отправки формы "Добавить карточку"
+function submitFormAdd(event,item) {
+  event.preventDefault();
+  cardList.addItem(createCards(item));
+  popupWithFormAddCard.close();
+}
+
+
+const popupWithFormAddCard = new PopupWithForm(popupCardAdd,submitFormAdd,validDate)
+popupWithFormAddCard.setEventListeners();
+
+addButton.addEventListener('click', popupWithFormAddCard.open);
+
+
 
 cardList.renderer();
 

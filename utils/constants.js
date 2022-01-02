@@ -3,6 +3,7 @@ export const containertCards = document.querySelector('.cards');
 export const popupProfileEdit = document.querySelector('.popup_profile-edit');
 export const popupCardAdd = document.querySelector('.popup_card-add');
 export const popupCardOpen = document.querySelector('.popup_card-open');
+export const addButton = document.querySelector('.profile__button-add');
 
 
 export const configCard = {
