@@ -7,8 +7,10 @@ export const addButton = document.querySelector('.profile__button-add');
 export const editButton = document.querySelector('.profile__button-edit');
 export const profileName = document.querySelector('.profile__name');
 export const profileDescription = document.querySelector('.profile__description');
-
-
+export const inputNameEditForm = document.querySelector('.popup__input_contains_name');
+export const inputDescriptEditForm = document.querySelector('.popup__input_contains_hobbies');
+export const popupFormEdit = document.querySelector('.popup__form_profile-edit');
+export const popupFormAdd = document.querySelector('.popup__form_card-add');
 
 export const configCard = {
   cardItem: '.cards__item',
