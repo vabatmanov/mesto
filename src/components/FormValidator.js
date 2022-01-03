@@ -2,6 +2,8 @@ class FormValidator {
   constructor(validDate, form) {
     this._validDate = validDate;
     this._form = form;
+    this._submitButton = this._form.querySelector(this._validDate.submitButtonSelector);
+    this._inputList = Array.from(this._form.querySelectorAll(this._validDate.inputSelector));
   }
 
   enableValidation() {
@@ -12,8 +14,7 @@ class FormValidator {
   }
 
   _setEventListeners() {
-    this._buttonElement = this._form.querySelector(this._validDate.submitButtonSelector);
-    this._inputList = Array.from(this._form.querySelectorAll(this._validDate.inputSelector));
+
     this._toggleButtonState();
     this._inputList.forEach((inputElement) => {
       inputElement.addEventListener('input', () => {
@@ -31,11 +32,11 @@ class FormValidator {
 
   _toggleButtonState() {
     if (this._hasInvalidInput()) {
-      this._buttonElement.classList.add(this._validDate.inactiveButtonClass);
-      this._buttonElement.setAttribute('disabled', true);
+      this._submitButton.classList.add(this._validDate.inactiveButtonClass);
+      this._submitButton.setAttribute('disabled', true);
     } else {
-      this._buttonElement.classList.remove(this._validDate.inactiveButtonClass);
-      this._buttonElement.removeAttribute('disabled');
+      this._submitButton.classList.remove(this._validDate.inactiveButtonClass);
+      this._submitButton.removeAttribute('disabled');
     }
   }
 
