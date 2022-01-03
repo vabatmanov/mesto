@@ -27,19 +27,18 @@ import {
 const popupWithImage = new PopupWithImage(popupCardOpen);
 popupWithImage.setEventListeners();
 
-
-function openPopupWithImage(objectCard) {
+//Функция открытия Popup просмотра картинки
+function handleCardClick(objectCard) {
   popupWithImage.open(objectCard.link, objectCard.name);
 }
 
-
 //Генерация карты
 function createCards(item) {
-  const card = new Card(item, templateCard, configCard, openPopupWithImage);
+  const card = new Card(item, templateCard, configCard, handleCardClick);
   return card.createCard();
 }
 
-//Создание объекта "добавления карт"
+//Создание объекта "Section"
 const cardList = new Section({
   items: cards,
   renderer: (item) => {
@@ -63,6 +62,7 @@ addButton.addEventListener('click', () => {
   formValidatorAdd.clearFormValidation();
 });
 
+//Создание объекта UserInfo
 const userInfo = new UserInfo({
   username: profileName,
   description: profileDescription
@@ -78,6 +78,7 @@ function submitFormEdit(event, object) {
   popupWithFormEditProfile.close();
 }
 
+//Создание объекта "попап редактирования профиля"
 const popupWithFormEditProfile = new PopupWithForm(popupProfileEdit,submitFormEdit,validDate)
 popupWithFormEditProfile.setEventListeners();
 
@@ -89,8 +90,10 @@ editButton.addEventListener('click', () => {
   popupWithFormEditProfile.open();
 });
 
+//инициализация карт
 cardList.renderer();
 
+//Создание и включения валидации форм
 const formValidatorAdd = new FormValidator(validDate, popupFormAdd);
 const formValidatorEdit = new FormValidator(validDate, popupFormEdit);
 formValidatorAdd.enableValidation();
