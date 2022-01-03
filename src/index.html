@@ -5,18 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
   <meta name="description" content="Место Россия">
   <meta name="author" content="Батманов Владислав">
-  <link rel="stylesheet" href=./pages/index.css>
   <title>Путешествие по России</title>
 </head>
 <body>
   <div class="page">
     <header class="header">
-      <img class="header__logo" src="images/logo/logo.svg" alt="Логотип">
+      <img class="header__logo" src=<%=require('./images/logo/logo.svg')%> alt="Логотип">
     </header>
 
     <main class="content">
       <article class="profile">
-        <img class="profile__avatar" src="images/avatar.jpg" alt="Изображение профиля">
+        <img class="profile__avatar" src=<%=require('./images/avatar.jpg')%> alt="Изображение профиля">
         <h1 class="profile__name">Жак-Ив Кусто</h1>
         <p class="profile__description">Исследователь океана</p>
         <button class="profile__button-edit" aria-label="Изменить" type="button"></button>
@@ -70,7 +69,7 @@
 
     <div class="popup popup_card-open">
       <div class="popup__content popup__content_type_gallery">
-        <img class="popup__image" src="images/bin.svg" alt="Изображение">
+        <img class="popup__image" src=<%=require('./images/bin.svg')%> alt="Изображение">
         <p class="popup__name-image">Без названия</p>
         <button class="popup__button-close popup__button-close_card-open" aria-label="Закрыть" type="button"></button>
       </div>
@@ -79,12 +78,11 @@
 
   <template id="template-cards-item">
     <li class="cards__item">
-      <img class="cards__image" src="images/bin.svg" alt="">
+      <img class="cards__image" src=<%=require('./images/bin.svg')%> alt="">
       <h2 class="cards__caption"></h2>
       <button class="cards__like" aria-label="Поставить лайк" type="button"></button>
       <button class="cards__bin" aria-label="Удалить" type="button"></button>
     </li>
   </template>
-  <script type="module" src="pages/index.js"></script>
 </body>
 </html>
