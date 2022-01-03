@@ -5,18 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
   <meta name="description" content="Место Россия">
   <meta name="author" content="Батманов Владислав">
-  <link rel="stylesheet" href=./pages/index.css>
   <title>Путешествие по России</title>
 </head>
 <body>
   <div class="page">
     <header class="header">
-      <img class="header__logo" src="images/logo/logo.svg" alt="Логотип">
+      <img class="header__logo" src=<%=require('./images/logo/logo.svg')%> alt="Логотип">
     </header>
 
     <main class="content">
       <article class="profile">
-        <img class="profile__avatar" src="images/avatar.jpg" alt="Изображение профиля">
+        <img class="profile__avatar" src=<%=require('./images/avatar.jpg')%> alt="Изображение профиля">
         <h1 class="profile__name">Жак-Ив Кусто</h1>
         <p class="profile__description">Исследователь океана</p>
         <button class="profile__button-edit" aria-label="Изменить" type="button"></button>
@@ -38,11 +37,11 @@
         <h3 class="popup__caption">Редактировать профиль</h3>
         <form class="popup__form popup__form_profile-edit" name="editprofile">
           <label class="popup__field">
-            <input type="text" class="popup__input popup__input_contains_name" name="input-profile-name" required minlength="2" maxlength="40" value=":)">
+            <input type="text" class="popup__input popup__input_contains_name" name="input-profile-name" id="username" required minlength="2" maxlength="40" value=":)">
             <span class="popup__input-error input-profile-name-error">1</span>
           </label>
           <label class="popup__field">
-            <input type="text" class="popup__input popup__input_contains_hobbies" name="input-profile-hobbies" required minlength="2" maxlength="200" value=":)">
+            <input type="text" class="popup__input popup__input_contains_hobbies" name="input-profile-hobbies" id="description" required minlength="2" maxlength="200" value=":)">
             <span class="popup__input-error input-profile-hobbies-error">2</span>
           </label>
           <button class="popup__send popup__send_profile-edit" aria-label="Сохранить" type="submit">Сохранить</button>
@@ -56,11 +55,11 @@
         <h3 class="popup__caption">Новое место</h3>
         <form class="popup__form popup__form_card-add" name="addcard">
           <label class="popup__field">
-            <input type="text" class="popup__input popup__input_contains_card-name" name="input-card-name" placeholder="Название" required minlength="2" maxlength="30">
+            <input type="text" class="popup__input popup__input_contains_card-name" name="input-card-name" id="name" placeholder="Название" required minlength="2" maxlength="30">
             <span class="popup__input-error input-card-name-error">3</span>
           </label>
           <label class="popup__field">
-            <input type="url" class="popup__input popup__input_contains_card-link" name="input-card-link" placeholder="Ссылка на картинку" required>
+            <input type="url" class="popup__input popup__input_contains_card-link" name="input-card-link" id="link" placeholder="Ссылка на картинку" required>
             <span class="popup__input-error input-card-link-error">4</span>
           </label>
           <button class="popup__send popup__send_card-add" aria-label="Сохранить" type="submit">Создать</button>
@@ -70,7 +69,7 @@
 
     <div class="popup popup_card-open">
       <div class="popup__content popup__content_type_gallery">
-        <img class="popup__image" src="images/bin.svg" alt="Изображение">
+        <img class="popup__image" src=<%=require('./images/bin.svg')%> alt="Изображение">
         <p class="popup__name-image">Без названия</p>
         <button class="popup__button-close popup__button-close_card-open" aria-label="Закрыть" type="button"></button>
       </div>
@@ -79,12 +78,11 @@
 
   <template id="template-cards-item">
     <li class="cards__item">
-      <img class="cards__image" src="images/bin.svg" alt="">
+      <img class="cards__image" src=<%=require('./images/bin.svg')%> alt="">
       <h2 class="cards__caption"></h2>
       <button class="cards__like" aria-label="Поставить лайк" type="button"></button>
       <button class="cards__bin" aria-label="Удалить" type="button"></button>
     </li>
   </template>
-  <script type="module" src="scripts/index.js"></script>
 </body>
 </html>
