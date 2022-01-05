@@ -4,7 +4,9 @@
   height: 120px;
   grid-row: 1/4;
   grid-column: 1/2;
+  transition: opacity 0.3s linear;
 }
+
 
 @media screen and (min-width: 524px) and (max-width: 690px) {
   .profile__avatar {
