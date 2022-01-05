@@ -3,6 +3,7 @@
   width: 120px;
   height: 120px;
   grid-row: 1/4;
+  grid-column: 1/2;
 }
 
 @media screen and (min-width: 524px) and (max-width: 690px) {
