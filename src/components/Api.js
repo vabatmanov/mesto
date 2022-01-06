@@ -14,6 +14,10 @@ export default class Api {
     })
   }
 
+  _caseMethod(liked) {
+    return (liked())?'DELETE':'PUT';
+  }
+
   getUserInfo(){
     return this._promisResult(fetch(`${this._address}users/me`, {
       headers: {
@@ -62,4 +66,13 @@ export default class Api {
     }))
   }
 
+  like({cardId, liked}){
+    return this._promisResult(fetch(`${this._address}cards/${cardId}/likes`, {
+      method: this._caseMethod(liked),
+      headers: {
+        authorization: this._token,
+        'Content-Type': 'application/json'
+      }
+    }))
+  }
 }

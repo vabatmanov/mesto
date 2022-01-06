@@ -39,7 +39,7 @@ function submitRemoveCard(evt,{handleRemoveCard,_id} ) {
     .catch(error => {
       console.log(error)
     })
-    .finally(popupWithRemoveCard.close())
+    .finally(popupWithRemoveCard.close)
 }
 
 //Создание объекта "удаления карты"
@@ -60,9 +60,19 @@ function handleCardClick(objectCard) {
   popupWithImage.open(objectCard.link, objectCard.name);
 }
 
+function handleLikeCardClick({updateLike, liked, cardId}) {
+  api.like({cardId, liked})
+    .then(result => {
+      updateLike(result.likes.length);
+    })
+    .catch(error => {
+      console.log(error)
+    })
+}
+
 //Генерация карты
 function createCards(cardData) {
-  const card = new Card(cardData, templateCard, configCard, handleCardClick, handleBinCardClick,userInfo.getUserInfo()._id);
+  const card = new Card(cardData, templateCard, configCard, handleCardClick, handleBinCardClick,userInfo.getUserInfo()._id,handleLikeCardClick);
   return card.createCard();
 }
 
@@ -83,7 +93,7 @@ function submitFormAdd(event,cardData) {
     .catch(error => {
       console.log(error)
     })
-    .finally(popupWithFormAddCard.close())
+    .finally(popupWithFormAddCard.close)
 }
 
 //Создание объекта "попап добавления карты"
@@ -111,7 +121,7 @@ function submitFormEdit(event, userData) {
      .catch(error => {
          console.log(error)
      })
-    .finally(popupWithFormEditProfile.close())
+    .finally(popupWithFormEditProfile.close)
 }
 
 //Создание объекта "попап редактирования профиля"
