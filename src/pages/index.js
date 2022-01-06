@@ -58,9 +58,15 @@ const cardList = new Section({
 },containertCards);
 
 //Функция отправки формы "Добавить карточку"
-function submitFormAdd(event,item) {
+function submitFormAdd(event,cardData) {
   event.preventDefault();
-  cardList.addItem(createCards(item));
+  api.addCard({name: cardData.cardName, link: cardData.cardLink})
+    .then(result => {
+      cardList.addItem(createCards(result));
+    })
+    .catch(error => {
+      console.log(error)
+    })
   popupWithFormAddCard.close();
 }
 

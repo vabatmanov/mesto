@@ -5,7 +5,7 @@ export default class Api {
   }
 
   _promisResult(promis){
-    return  promis.then(result => {
+    return promis.then(result => {
       if (result.ok) {
         return result.json();
       } else {
@@ -38,6 +38,17 @@ export default class Api {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(userData)
+    }))
+  }
+
+  addCard(cardData){
+    return this._promisResult(fetch(`${this._address}cards`, {
+      method: 'POST',
+      headers: {
+        authorization: this._token,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(cardData)
     }))
   }
 
