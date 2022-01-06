@@ -30,10 +30,15 @@ const api = new Api({
   token: 'OTYwM2YwMzktMDdlNi00MmQ4LThlZTEtZmY1Mzk5ZGU3MTQ2'
 })
 
-
-function submitRemoveCard(evt,handleRemoveCard) {
+function submitRemoveCard(evt, {handleRemoveCard: handleRemoveCard,_id: _id}) {
   evt.preventDefault();
-  handleRemoveCard();
+  api.removeCard(_id)
+    .then(() => {
+      handleRemoveCard();
+    })
+    .catch(error => {
+      console.log(error)
+    })
   popupWithRemoveCard.close();
 }
 
@@ -57,7 +62,7 @@ function handleCardClick(objectCard) {
 
 //Генерация карты
 function createCards(cardData) {
-  const card = new Card(cardData, templateCard, configCard, handleCardClick, handleBinCardClick);
+  const card = new Card(cardData, templateCard, configCard, handleCardClick, handleBinCardClick,userInfo.getUserInfo()._id);
   return card.createCard();
 }
 

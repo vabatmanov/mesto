@@ -18,6 +18,7 @@ export const configCard = {
   cardsImage: '.cards__image',
   cardsCaption: '.cards__caption',
   cardBin: '.cards__bin',
+  cardBinHide: 'cards__bin_hide',
   cardLike: '.cards__like',
   cardLikeEnable: 'cards__like_enable',
   cardliked: '.cards__liked'

@@ -52,4 +52,14 @@ export default class Api {
     }))
   }
 
+  removeCard(cardData){
+    return this._promisResult(fetch(`${this._address}cards/${cardData}`, {
+      method: 'DELETE',
+      headers: {
+        authorization: this._token,
+        'Content-Type': 'application/json'
+      }
+    }))
+  }
+
 }
