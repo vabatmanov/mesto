@@ -44,16 +44,16 @@ function handleCardClick(objectCard) {
 }
 
 //Генерация карты
-function createCards(item) {
-  const card = new Card(item, templateCard, configCard, handleCardClick);
+function createCards(cardData) {
+  const card = new Card(cardData, templateCard, configCard, handleCardClick);
   return card.createCard();
 }
 
 //Создание объекта "Section"
 const cardList = new Section({
   items: cards,
-  renderer: (item) => {
-    cardList.addItem(createCards(item));
+  renderer: (cardData) => {
+    cardList.addItem(createCards(cardData));
   }
 },containertCards);
 

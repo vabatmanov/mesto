@@ -12,6 +12,7 @@ export default class Card {
     this._card.querySelector(this._conf.cardsImage).alt = 'Изображение ' + this._objectCard.name;
     this._card.querySelector(this._conf.cardsImage).src = this._objectCard.link;
     this._card.querySelector(this._conf.cardsCaption).textContent = this._objectCard.name;
+    this._card.querySelector(this._conf.cardliked).textContent = (this._objectCard.likes).length;
   }
 
   _addLike(){

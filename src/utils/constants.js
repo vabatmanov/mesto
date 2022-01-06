@@ -19,6 +19,7 @@ export const configCard = {
   cardBin: '.cards__bin',
   cardLike: '.cards__like',
   cardLikeEnable: 'cards__like_enable',
+  cardliked: '.cards__liked'
 }
 
 
