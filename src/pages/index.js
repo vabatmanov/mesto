@@ -7,13 +7,13 @@ import PopupWithForm from "../components/PopupWithForm.js";
 import UserInfo from "../components/UserInfo.js";
 import FormValidator from "../components/FormValidator.js";
 import {
-  cards,
   templateCard,
   configCard,
   validDate,
   containertCards,
   popupProfileEdit,
   popupCardAdd,
+  popupRemoveCard,
   popupCardOpen,
   addButton,
   editButton,
@@ -31,7 +31,19 @@ const api = new Api({
 })
 
 
+function submitRemoveCard(evt,handleRemoveCard) {
+  evt.preventDefault();
+  handleRemoveCard();
+  popupWithRemoveCard.close();
+}
 
+//Создание объекта "удаления карты"
+const popupWithRemoveCard = new PopupWithForm(popupRemoveCard,submitRemoveCard,validDate)
+popupWithRemoveCard.setEventListeners();
+
+function handleBinCardClick(handleRemoveCard) {
+  popupWithRemoveCard.open(handleRemoveCard);
+}
 
 
 //Создание объекта "попап открытие карты"
@@ -45,13 +57,12 @@ function handleCardClick(objectCard) {
 
 //Генерация карты
 function createCards(cardData) {
-  const card = new Card(cardData, templateCard, configCard, handleCardClick);
+  const card = new Card(cardData, templateCard, configCard, handleCardClick, handleBinCardClick);
   return card.createCard();
 }
 
 //Создание объекта "Section"
 const cardList = new Section({
-  items: cards,
   renderer: (cardData) => {
     cardList.addItem(createCards(cardData));
   }
@@ -118,8 +129,12 @@ Promise.all([api.getUserInfo(), api.getCards()])
 
 
 
-//инициализация карт
-//cardList.renderer();
+
+
+
+
+
+
 
 //Создание и включения валидации форм
 const formValidatorAdd = new FormValidator(validDate, popupFormAdd);

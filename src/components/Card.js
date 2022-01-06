@@ -1,10 +1,11 @@
 export default class Card {
-  constructor(objectCard, templateCard, conf, openPopupWithImage) {
+  constructor(objectCard, templateCard, conf, openPopupWithImage, handleBinCardClick) {
     this._conf = conf;
     this._card = templateCard.querySelector(this._conf.cardItem).cloneNode(true);
     this._cardLike = this._card.querySelector(this._conf.cardLike);
     this._objectCard = objectCard;
     this._openPopupWithImage = openPopupWithImage;
+    this._handleBinCardClick = handleBinCardClick;
     this._handleRemoveCard = this._handleRemoveCard.bind(this);
   }
 
@@ -33,7 +34,9 @@ export default class Card {
       this._openPopupWithImage(this._objectCard);
     })
 
-    this._card.querySelector(this._conf.cardBin).addEventListener('click', this._handleRemoveCard);
+    this._card.querySelector(this._conf.cardBin).addEventListener('click',() => {
+      this._handleBinCardClick(this._handleRemoveCard);
+    });
 
     this._cardLike.addEventListener('click', () => {
       (this._cardLike.classList.contains(this._conf.cardLikeEnable)) ? this._removeLike() : this._addLike();
