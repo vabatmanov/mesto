@@ -30,7 +30,7 @@ const api = new Api({
   token: 'OTYwM2YwMzktMDdlNi00MmQ4LThlZTEtZmY1Mzk5ZGU3MTQ2'
 })
 
-function submitRemoveCard(evt, {handleRemoveCard: handleRemoveCard,_id: _id}) {
+function submitRemoveCard(evt,{handleRemoveCard,_id} ) {
   evt.preventDefault();
   api.removeCard(_id)
     .then(() => {
@@ -39,7 +39,7 @@ function submitRemoveCard(evt, {handleRemoveCard: handleRemoveCard,_id: _id}) {
     .catch(error => {
       console.log(error)
     })
-  popupWithRemoveCard.close();
+    .finally(popupWithRemoveCard.close())
 }
 
 //Создание объекта "удаления карты"
@@ -83,7 +83,7 @@ function submitFormAdd(event,cardData) {
     .catch(error => {
       console.log(error)
     })
-  popupWithFormAddCard.close();
+    .finally(popupWithFormAddCard.close())
 }
 
 //Создание объекта "попап добавления карты"
@@ -111,7 +111,7 @@ function submitFormEdit(event, userData) {
      .catch(error => {
          console.log(error)
      })
-  popupWithFormEditProfile.close();
+    .finally(popupWithFormEditProfile.close())
 }
 
 //Создание объекта "попап редактирования профиля"

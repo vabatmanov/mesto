@@ -17,7 +17,6 @@ export default class Card {
     this._card.querySelector(this._conf.cardsCaption).textContent = this._objectCard.name;
     this._card.querySelector(this._conf.cardliked).textContent = (this._objectCard.likes).length;
     this._hideBin();
-    console.log(this._objectCard);
   }
 
   _addLike(){

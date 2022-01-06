@@ -5,11 +5,11 @@ export default class Section {
   }
 
   addItem(element) {
-    this._container.append(element);
+    this._container.prepend(element);
   }
 
   renderer(cards) {
-    cards.forEach(item => {
+    cards.reverse().forEach(item => {
       this._renderer(item);
     });
   }
