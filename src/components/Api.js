@@ -1,0 +1,44 @@
+export default class Api {
+  constructor({address, token}) {
+    this._address = address;
+    this._token = atob(token);
+  }
+
+  _promisResult(promis){
+    return  promis.then(result => {
+      if (result.ok) {
+        return result.json();
+      } else {
+        return Promise.reject(`Ошибка: ${result.status}`);
+      }
+    })
+  }
+
+  getUserInfo(){
+    return this._promisResult(fetch(`${this._address}users/me`, {
+      headers: {
+        authorization: this._token
+      }
+    }))
+  }
+
+  getCards(){
+    return this._promisResult(fetch(`${this._address}cards`, {
+      headers: {
+        authorization: this._token
+      }
+    }))
+  }
+
+  editProfile(userData){
+    return this._promisResult(fetch(`${this._address}users/me`, {
+      method: 'PATCH',
+      headers: {
+        authorization: this._token,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(userData)
+    }))
+  }
+
+}

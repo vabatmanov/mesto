@@ -1,4 +1,5 @@
 import './index.css';
+import Api from "../components/Api";
 import Card from "../components/Card.js";
 import Section from "../components/Section.js";
 import PopupWithImage from "../components/PopupWithImage.js";
@@ -23,6 +24,15 @@ import {
   popupFormEdit,
   popupFormAdd
 } from '../utils/constants.js';
+
+const api = new Api({
+  address: 'https://mesto.nomoreparties.co/v1/cohort-32/',
+  token: 'OTYwM2YwMzktMDdlNi00MmQ4LThlZTEtZmY1Mzk5ZGU3MTQ2'
+})
+
+
+
+
 
 //Создание объекта "попап открытие карты"
 const popupWithImage = new PopupWithImage(popupCardOpen);
@@ -70,12 +80,15 @@ const userInfo = new UserInfo({
 });
 
 //Функция отправки формы "Изменения профиля"
-function submitFormEdit(event, object) {
+function submitFormEdit(event, userData) {
   event.preventDefault();
-  userInfo.setUserInfo({
-    username: object.username,
-    description: object.description
-  })
+  api.editProfile(userData)
+     .then(result => {
+       userInfo.setUserInfo(result);
+     })
+     .catch(error => {
+         console.log(error)
+     })
   popupWithFormEditProfile.close();
 }
 
@@ -85,14 +98,22 @@ popupWithFormEditProfile.setEventListeners();
 
 editButton.addEventListener('click', () => {
   const dateProfile = userInfo.getUserInfo();
-  inputNameEditForm.value = dateProfile.username;
-  inputDescriptEditForm.value = dateProfile.description;
+  inputNameEditForm.value = dateProfile.name;
+  inputDescriptEditForm.value = dateProfile.about;
   formValidatorEdit.clearFormValidation();
   popupWithFormEditProfile.open();
 });
 
+Promise.all([api.getUserInfo(), api.getCards()])
+  .then(([userData, cards]) => {
+    userInfo.setUserInfo(userData);
+    cardList.renderer(cards);
+  })
+
+
+
 //инициализация карт
-cardList.renderer();
+//cardList.renderer();
 
 //Создание и включения валидации форм
 const formValidatorAdd = new FormValidator(validDate, popupFormAdd);
