@@ -15,14 +15,18 @@ import {
   popupCardAdd,
   popupRemoveCard,
   popupCardOpen,
+  popupUpdateAvatar,
   addButton,
   editButton,
+  editAvatarButton,
   profileName,
   profileDescription,
+  profileAvatar,
   inputNameEditForm,
   inputDescriptEditForm,
   popupFormEdit,
-  popupFormAdd
+  popupFormAdd,
+  popupFormAvatar
 } from '../utils/constants.js';
 
 const api = new Api({
@@ -108,7 +112,8 @@ addButton.addEventListener('click', () => {
 //Создание объекта UserInfo
 const userInfo = new UserInfo({
   username: profileName,
-  description: profileDescription
+  description: profileDescription,
+  avatar: profileAvatar
 });
 
 //Функция отправки формы "Изменения профиля"
@@ -136,23 +141,33 @@ editButton.addEventListener('click', () => {
   popupWithFormEditProfile.open();
 });
 
+function submitFormEditAvatar(evt,avatarUrl) {
+  api.updateAvatar({avatar: avatarUrl.linkAvatar})
+    .then(result => {
+      userInfo.setUserInfo(result);
+    })
+    .catch(error => {
+      console.log(error)
+    })
+    .finally(popupWithFormEditAvatar.close)
+}
+
+//Создание объекта "попап редактирования аватарки"
+const popupWithFormEditAvatar = new PopupWithForm(popupUpdateAvatar,submitFormEditAvatar,validDate)
+popupWithFormEditAvatar.setEventListeners();
+
+editAvatarButton.addEventListener('click', () => popupWithFormEditAvatar.open());
+
 Promise.all([api.getUserInfo(), api.getCards()])
   .then(([userData, cards]) => {
     userInfo.setUserInfo(userData);
     cardList.renderer(cards);
   })
 
-
-
-
-
-
-
-
-
-
 //Создание и включения валидации форм
 const formValidatorAdd = new FormValidator(validDate, popupFormAdd);
 const formValidatorEdit = new FormValidator(validDate, popupFormEdit);
+const formValidatorAvatar = new FormValidator(validDate, popupFormAvatar);
 formValidatorAdd.enableValidation();
 formValidatorEdit.enableValidation();
+formValidatorAvatar.enableValidation();
