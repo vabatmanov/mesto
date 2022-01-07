@@ -77,7 +77,6 @@ export default class Api {
   }
 
   updateAvatar(avatarUrl){
-    console.log(avatarUrl);
     return this._promisResult(fetch(`${this._address}users/me/avatar`, {
       method: 'PATCH',
       headers: {

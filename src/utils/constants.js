@@ -35,5 +35,7 @@ export const validDate = {
   submitButtonSelector: '.popup__send',
   inactiveButtonClass: 'popup__send_disabled',
   inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__input-error_visible'
+  errorClass: 'popup__input-error_visible',
+  create: {off: 'Создать', on: 'Создать...'},
+  save: {off: 'Сохранить', on: 'Сохранить...'}
 }

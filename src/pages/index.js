@@ -43,7 +43,7 @@ function submitRemoveCard(evt,{handleRemoveCard,_id} ) {
     .catch(error => {
       console.log(error)
     })
-    .finally(popupWithRemoveCard.close)
+  popupWithRemoveCard.close();
 }
 
 //Создание объекта "удаления карты"
@@ -88,7 +88,7 @@ const cardList = new Section({
 },containertCards);
 
 //Функция отправки формы "Добавить карточку"
-function submitFormAdd(event,cardData) {
+function submitFormAdd(event, cardData, buttonLoad) {
   event.preventDefault();
   api.addCard({name: cardData.cardName, link: cardData.cardLink})
     .then(result => {
@@ -97,11 +97,15 @@ function submitFormAdd(event,cardData) {
     .catch(error => {
       console.log(error)
     })
-    .finally(popupWithFormAddCard.close)
+    .finally(() => {
+      buttonLoad();
+      popupWithFormAddCard.close();
+    });
+
 }
 
 //Создание объекта "попап добавления карты"
-const popupWithFormAddCard = new PopupWithForm(popupCardAdd,submitFormAdd,validDate)
+const popupWithFormAddCard = new PopupWithForm(popupCardAdd,submitFormAdd,validDate,validDate.create)
 popupWithFormAddCard.setEventListeners();
 
 addButton.addEventListener('click', () => {
@@ -117,7 +121,7 @@ const userInfo = new UserInfo({
 });
 
 //Функция отправки формы "Изменения профиля"
-function submitFormEdit(event, userData) {
+function submitFormEdit(event, userData, buttonLoad) {
   event.preventDefault();
   api.editProfile(userData)
      .then(result => {
@@ -126,11 +130,14 @@ function submitFormEdit(event, userData) {
      .catch(error => {
          console.log(error)
      })
-    .finally(popupWithFormEditProfile.close)
+    .finally(() => {
+      buttonLoad();
+      popupWithFormEditProfile.close();
+    });
 }
 
 //Создание объекта "попап редактирования профиля"
-const popupWithFormEditProfile = new PopupWithForm(popupProfileEdit,submitFormEdit,validDate)
+const popupWithFormEditProfile = new PopupWithForm(popupProfileEdit,submitFormEdit,validDate,validDate.save)
 popupWithFormEditProfile.setEventListeners();
 
 editButton.addEventListener('click', () => {
@@ -141,7 +148,7 @@ editButton.addEventListener('click', () => {
   popupWithFormEditProfile.open();
 });
 
-function submitFormEditAvatar(evt,avatarUrl) {
+function submitFormEditAvatar(evt, avatarUrl, buttonLoad) {
   api.updateAvatar({avatar: avatarUrl.linkAvatar})
     .then(result => {
       userInfo.setUserInfo(result);
@@ -149,11 +156,14 @@ function submitFormEditAvatar(evt,avatarUrl) {
     .catch(error => {
       console.log(error)
     })
-    .finally(popupWithFormEditAvatar.close)
+    .finally(() => {
+      buttonLoad();
+      popupWithFormEditAvatar.close();
+    });
 }
 
 //Создание объекта "попап редактирования аватарки"
-const popupWithFormEditAvatar = new PopupWithForm(popupUpdateAvatar,submitFormEditAvatar,validDate)
+const popupWithFormEditAvatar = new PopupWithForm(popupUpdateAvatar,submitFormEditAvatar,validDate,validDate.save)
 popupWithFormEditAvatar.setEventListeners();
 
 editAvatarButton.addEventListener('click', () => popupWithFormEditAvatar.open());
