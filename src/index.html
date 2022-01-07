@@ -15,8 +15,8 @@
 
     <main class="content">
       <article class="profile">
+        <button class="profile__button-edit-avatar" aria-label="Редактировать" type="button"></button>
         <img class="profile__avatar" src=<%=require('./images/avatar.jpg')%> alt="Изображение профиля">
-        <button class="profile__button-edit-avatar" aria-label="Изменить" type="button"></button>
         <h1 class="profile__name">Жак-Ив Кусто</h1>
         <p class="profile__description">Исследователь океана</p>
         <button class="profile__button-edit" aria-label="Изменить" type="button"></button>
@@ -38,11 +38,11 @@
         <h3 class="popup__caption">Редактировать профиль</h3>
         <form class="popup__form popup__form_profile-edit" name="editprofile">
           <label class="popup__field">
-            <input type="text" class="popup__input popup__input_contains_name" name="input-profile-name" id="username" required minlength="2" maxlength="40" value=":)">
+            <input type="text" class="popup__input popup__input_contains_name" name="input-profile-name" id="name" required minlength="2" maxlength="40" value=":)">
             <span class="popup__input-error input-profile-name-error">1</span>
           </label>
           <label class="popup__field">
-            <input type="text" class="popup__input popup__input_contains_hobbies" name="input-profile-hobbies" id="description" required minlength="2" maxlength="200" value=":)">
+            <input type="text" class="popup__input popup__input_contains_hobbies" name="input-profile-hobbies" id="about" required minlength="2" maxlength="200" value=":)">
             <span class="popup__input-error input-profile-hobbies-error">2</span>
           </label>
           <button class="popup__send popup__send_profile-edit" aria-label="Сохранить" type="submit">Сохранить</button>
@@ -56,14 +56,38 @@
         <h3 class="popup__caption">Новое место</h3>
         <form class="popup__form popup__form_card-add" name="addcard">
           <label class="popup__field">
-            <input type="text" class="popup__input popup__input_contains_card-name" name="input-card-name" id="name" placeholder="Название" required minlength="2" maxlength="30">
+            <input type="text" class="popup__input popup__input_contains_card-name" name="input-card-name" id="cardName" placeholder="Название" required minlength="2" maxlength="30">
             <span class="popup__input-error input-card-name-error">3</span>
           </label>
           <label class="popup__field">
-            <input type="url" class="popup__input popup__input_contains_card-link" name="input-card-link" id="link" placeholder="Ссылка на картинку" required>
+            <input type="url" class="popup__input popup__input_contains_card-link" name="input-card-link" id="cardLink" placeholder="Ссылка на картинку" required>
             <span class="popup__input-error input-card-link-error">4</span>
           </label>
           <button class="popup__send popup__send_card-add" aria-label="Сохранить" type="submit">Создать</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="popup popup_avatar-update">
+      <div class="popup__content">
+        <button class="popup__button-close popup__button-close_avatar-update" aria-label="Закрыть" type="button"></button>
+        <h3 class="popup__caption">Обновить аватар</h3>
+        <form class="popup__form popup__form_avatar-update" name="updateAvatar">
+          <label class="popup__field">
+            <input type="url" class="popup__input popup__input_contains_avatar-link" name="input-avatar-link" id="linkAvatar" placeholder="Ссылка на картинку" required>
+            <span class="popup__input-error input-avatar-link-error">5</span>
+          </label>
+          <button class="popup__send popup__send_avatar-update" aria-label="Сохранить" type="submit">Сохранить</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="popup popup_delete">
+      <div class="popup__content">
+        <button class="popup__button-close popup__button-close_delete" aria-label="Закрыть" type="button"></button>
+        <h3 class="popup__caption">Вы уверены?</h3>
+        <form class="popup__form popup__form_delete" name="delete">
+          <button class="popup__send popup__send_delete" aria-label="Да" type="submit">Да</button>
         </form>
       </div>
     </div>
@@ -81,8 +105,11 @@
     <li class="cards__item">
       <img class="cards__image" src=<%=require('./images/bin.svg')%> alt="">
       <h2 class="cards__caption"></h2>
-      <button class="cards__like" aria-label="Поставить лайк" type="button"></button>
       <button class="cards__bin" aria-label="Удалить" type="button"></button>
+      <div class="cards__like-container">
+        <button class="cards__like" aria-label="Поставить лайк" type="button"></button>
+        <h3 class="cards__liked">0</h3>
+      </div>
     </li>
   </template>
 </body>

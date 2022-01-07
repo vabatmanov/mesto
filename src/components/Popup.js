@@ -4,6 +4,7 @@ export default class Popup {
     this._handleEscClose = this._handleEscClose.bind(this);
     this._closeOverlayPopup = this._closeOverlayPopup.bind(this);
     this.open = this.open.bind(this);
+    this._handleRemoveCard = null;
   }
 
   _handleEscClose(evt) {
@@ -12,13 +13,14 @@ export default class Popup {
     }
   }
 
-  open() {
+  open(handleRemoveCard) {
+    if (handleRemoveCard) {this._handleRemoveCard = handleRemoveCard;}
     this._popup.classList.add('popup_opened');
     document.addEventListener('keydown', this._handleEscClose);
     this._popup.addEventListener('click', this._closeOverlayPopup);
   }
 
-  close() {
+  close () {
     this._popup.classList.remove('popup_opened');
     document.removeEventListener('keydown', this._handleEscClose);
     this._popup.removeEventListener('click', this._closeOverlayPopup);

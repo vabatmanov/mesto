@@ -21,9 +21,12 @@
 @import url(../blocks/cards/__item/cards__item.css);
 @import url(../blocks/cards/__image/cards__image.css);
 @import url(../blocks/cards/__bin/cards__bin.css);
+@import url(../blocks/cards/__bin/_hide/cards__bin_hide.css);
 @import url(../blocks/cards/__caption/cards__caption.css);
+@import url(../blocks/cards/__like-container/cards__like-container.css);
 @import url(../blocks/cards/__like/cards__like.css);
 @import url(../blocks/cards/__like/_enable/cards__like_enable.css);
+@import url(../blocks/cards/__liked/cards__liked.css);
 /*footer*/
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__title/footer__title.css);
