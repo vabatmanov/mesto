@@ -4,8 +4,8 @@ export default class Api {
     this._token = atob(token);
   }
 
-  _promisResult(promis){
-    return promis.then(result => {
+  _promiseResult(promise){
+    return promise.then(result => {
       if (result.ok) {
         return result.json();
       } else {
@@ -19,7 +19,7 @@ export default class Api {
   }
 
   getUserInfo(){
-    return this._promisResult(fetch(`${this._address}users/me`, {
+    return this._promiseResult(fetch(`${this._address}users/me`, {
       headers: {
         authorization: this._token
       }
@@ -27,7 +27,7 @@ export default class Api {
   }
 
   getCards(){
-    return this._promisResult(fetch(`${this._address}cards`, {
+    return this._promiseResult(fetch(`${this._address}cards`, {
       headers: {
         authorization: this._token
       }
@@ -35,7 +35,7 @@ export default class Api {
   }
 
   editProfile(userData){
-    return this._promisResult(fetch(`${this._address}users/me`, {
+    return this._promiseResult(fetch(`${this._address}users/me`, {
       method: 'PATCH',
       headers: {
         authorization: this._token,
@@ -46,7 +46,7 @@ export default class Api {
   }
 
   addCard(cardData){
-    return this._promisResult(fetch(`${this._address}cards`, {
+    return this._promiseResult(fetch(`${this._address}cards`, {
       method: 'POST',
       headers: {
         authorization: this._token,
@@ -57,7 +57,7 @@ export default class Api {
   }
 
   removeCard(cardData){
-    return this._promisResult(fetch(`${this._address}cards/${cardData}`, {
+    return this._promiseResult(fetch(`${this._address}cards/${cardData}`, {
       method: 'DELETE',
       headers: {
         authorization: this._token,
@@ -67,7 +67,7 @@ export default class Api {
   }
 
   like({cardId, liked}){
-    return this._promisResult(fetch(`${this._address}cards/${cardId}/likes`, {
+    return this._promiseResult(fetch(`${this._address}cards/${cardId}/likes`, {
       method: this._caseMethod(liked),
       headers: {
         authorization: this._token,
@@ -77,7 +77,7 @@ export default class Api {
   }
 
   updateAvatar(avatarUrl){
-    return this._promisResult(fetch(`${this._address}users/me/avatar`, {
+    return this._promiseResult(fetch(`${this._address}users/me/avatar`, {
       method: 'PATCH',
       headers: {
         authorization: this._token,

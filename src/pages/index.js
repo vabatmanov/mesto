@@ -4,13 +4,14 @@ import Card from "../components/Card.js";
 import Section from "../components/Section.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
+import PopupWithConfirmation from "../components/PopupConfirmation.js";
 import UserInfo from "../components/UserInfo.js";
 import FormValidator from "../components/FormValidator.js";
 import {
   templateCard,
   configCard,
   validDate,
-  containertCards,
+  containerCards,
   popupProfileEdit,
   popupCardAdd,
   popupRemoveCard,
@@ -34,25 +35,28 @@ const api = new Api({
   token: 'OTYwM2YwMzktMDdlNi00MmQ4LThlZTEtZmY1Mzk5ZGU3MTQ2'
 })
 
+
 function submitRemoveCard(evt,{handleRemoveCard,_id} ) {
   evt.preventDefault();
   api.removeCard(_id)
     .then(() => {
       handleRemoveCard();
+      popupWithRemoveCard.close();
     })
     .catch(error => {
       console.log(error)
     })
-  popupWithRemoveCard.close();
+
 }
 
 //Создание объекта "удаления карты"
-const popupWithRemoveCard = new PopupWithForm(popupRemoveCard,submitRemoveCard,validDate)
+const popupWithRemoveCard = new PopupWithConfirmation(popupRemoveCard,submitRemoveCard,validDate)
 popupWithRemoveCard.setEventListeners();
 
 function handleBinCardClick(handleRemoveCard) {
   popupWithRemoveCard.open(handleRemoveCard);
 }
+
 
 
 //Создание объекта "попап открытие карты"
@@ -85,7 +89,7 @@ const cardList = new Section({
   renderer: (cardData) => {
     cardList.addItem(createCards(cardData));
   }
-},containertCards);
+},containerCards);
 
 //Функция отправки формы "Добавить карточку"
 function submitFormAdd(event, cardData, buttonLoad) {
@@ -93,13 +97,13 @@ function submitFormAdd(event, cardData, buttonLoad) {
   api.addCard({name: cardData.cardName, link: cardData.cardLink})
     .then(result => {
       cardList.addItem(createCards(result));
+      popupWithFormAddCard.close();
     })
     .catch(error => {
       console.log(error)
     })
     .finally(() => {
       buttonLoad();
-      popupWithFormAddCard.close();
     });
 
 }
@@ -126,13 +130,13 @@ function submitFormEdit(event, userData, buttonLoad) {
   api.editProfile(userData)
      .then(result => {
        userInfo.setUserInfo(result);
+       popupWithFormEditProfile.close();
      })
      .catch(error => {
          console.log(error)
      })
     .finally(() => {
       buttonLoad();
-      popupWithFormEditProfile.close();
     });
 }
 
@@ -152,13 +156,13 @@ function submitFormEditAvatar(evt, avatarUrl, buttonLoad) {
   api.updateAvatar({avatar: avatarUrl.linkAvatar})
     .then(result => {
       userInfo.setUserInfo(result);
+      popupWithFormEditAvatar.close();
     })
     .catch(error => {
       console.log(error)
     })
     .finally(() => {
       buttonLoad();
-      popupWithFormEditAvatar.close();
     });
 }
 
@@ -173,6 +177,10 @@ Promise.all([api.getUserInfo(), api.getCards()])
     userInfo.setUserInfo(userData);
     cardList.renderer(cards);
   })
+  .catch(result => {
+    console.log(result);
+  })
+
 
 //Создание и включения валидации форм
 const formValidatorAdd = new FormValidator(validDate, popupFormAdd);

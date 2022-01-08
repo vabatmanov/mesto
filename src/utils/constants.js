@@ -1,10 +1,10 @@
 export const templateCard = document.querySelector('#template-cards-item').content;
-export const containertCards = document.querySelector('.cards');
-export const popupProfileEdit = document.querySelector('.popup_profile-edit');
-export const popupCardAdd = document.querySelector('.popup_card-add');
-export const popupRemoveCard = document.querySelector('.popup_delete');
-export const popupUpdateAvatar = document.querySelector('.popup_avatar-update');
-export const popupCardOpen = document.querySelector('.popup_card-open');
+export const containerCards = '.cards';
+export const popupProfileEdit = '.popup_profile-edit';
+export const popupCardAdd = '.popup_card-add';
+export const popupRemoveCard = '.popup_delete';
+export const popupUpdateAvatar = '.popup_avatar-update';
+export const popupCardOpen = '.popup_card-open';
 export const addButton = document.querySelector('.profile__button-add');
 export const editButton = document.querySelector('.profile__button-edit');
 export const editAvatarButton = document.querySelector('.profile__button-edit-avatar');
@@ -25,7 +25,7 @@ export const configCard = {
   cardBinHide: 'cards__bin_hide',
   cardLike: '.cards__like',
   cardLikeEnable: 'cards__like_enable',
-  cardliked: '.cards__liked'
+  cardLiked: '.cards__liked'
 }
 
 

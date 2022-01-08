@@ -21,7 +21,6 @@ export default class PopupWithForm extends Popup {
   }
 
   _getInputValues() {
-    this._buttonLoad();
     const inputsData = {};
     this._popupFormInputs.forEach((item) => {
       inputsData[item.id] = item.value;
@@ -32,10 +31,10 @@ export default class PopupWithForm extends Popup {
 
   setEventListeners() {
     super.setEventListeners();
-    this._popupFormSubmit.addEventListener('click',(evt) => this._submitForm(evt,
-      (this._handleRemoveCard)?this._handleRemoveCard:this._getInputValues(),
-      this._buttonLoad
-    ));
+    this._popupForm.addEventListener('submit',(evt) => {
+      this._buttonLoad();
+      this._submitForm(evt,this._getInputValues(),this._buttonLoad);
+    });
   }
 
   close() {
