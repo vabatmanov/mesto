@@ -36,7 +36,7 @@ export default class Card {
   }
 
   _updateLikeNumber(number){
-    this._card.querySelector(this._conf.cardliked).textContent = number;
+    this._card.querySelector(this._conf.cardLiked).textContent = number;
   }
 
   _searchMyLike() {
